@@ -1,7 +1,5 @@
 # Hello 👋
 
-![Gitea Last Commit](https://img.shields.io/gitea/last-commit/Not-a-cowfr/Not-a-cowfr?path=README.md)
-
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Not-a-cowfr&show_icons=true&theme=codeSTACKr&rank_icon=percentile)
 
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Not-a-cowfr&layout=compact&theme=codeSTACKr)\
