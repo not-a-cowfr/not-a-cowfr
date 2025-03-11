@@ -22,9 +22,6 @@
     "git_status": true
   },
   "unnecessary_code_fade": 0.2,
-  "experimental.theme_overrides": {
-    "version_control_modified": "#6772b8"
-  },
 
   "formatter": {
     "external": {
