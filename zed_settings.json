@@ -17,41 +17,14 @@
   "ui_font_size": 15,
 
   "icon_theme": "Bearded Icon Theme",
-  "theme": "New Darcula",
-  "experimental.theme_overrides": {
-    "border": "#2f2f2f",
-    "border.variant": "#2a2a2a",
-    "editor.active_line.background": "#FFFFFF02",
-    "editor.background": "#1d1d1d",
-    "editor.gutter.background": "#1d1d1d",
-    "hint": "#FFFFFF20",
-    "panel.background": "#161616",
-    "scrollbar.thumb.background": "#FFFFFF05",
-    "status_bar.background": "#161616",
-    "tab.active_background": "#1d1d1d",
-    "tab_bar.background": "#161616",
-    "terminal.background": "#1d1d1d",
-    "title_bar.background": "#161616",
-    "toolbar.background": "#1d1d1d",
-    "syntax": {
-      "comment": {
-        "font_weight": 100
-      },
-      "type": {
-        "color": "#f0be6e"
-      },
-      "variable": {
-        "color": "#93689c"
-      },
-      "string.escape": {
-        "color": "#ff9549"
-      }
-    }
-  },
+  "theme": "Darcula Dark",
   "tabs": {
     "git_status": true
   },
   "unnecessary_code_fade": 0.2,
+  "experimental.theme_overrides": {
+    "version_control_modified": "#6772b8"
+  },
 
   "formatter": {
     "external": {
