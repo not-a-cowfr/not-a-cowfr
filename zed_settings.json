@@ -45,5 +45,25 @@
         "state": "writing slop in {filename}"
       }
     }
+  },
+  "tailwindcss-language-server": {
+    "settings": {
+      "includeLanguages": {
+        "rust": "html"
+      },
+      "experimental": {
+        "classRegex": [
+          "class\\s*:\\s*\"([^\"}]*)",
+          "class=\"([^\"]*)",
+          "class={\"([^\"}]*)",
+          "class=format!({\"([^\"}]*)"
+        ]
+      }
+    }
+  },
+  "languages": {
+      "Rust": {
+        "language_servers": ["rust-analyzer", "tailwindcss-language-server"]
+      }
   }
 }
