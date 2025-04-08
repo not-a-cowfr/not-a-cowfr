@@ -112,11 +112,11 @@ alias "cd ." = cd ..
 alias neofetch = bash neofetch
 alias "zed update" = scoop update zed-nightly
 
-# table of uncommited lines removed and added
+# table of uncommited lines removed and added, good for egoing yourself with how much you overcomplicate things
 def "git lines" [
     --no-ansi (-n), # Disable ansi coloring in the table, allowing you to pipe into other commands that rely on the cell being an number
     --total (-t), # Only show the total diff, no table of each file
-] {
+]: nothing -> any {
     if (git rev-parse --is-inside-work-tree | str trim) != "true" {
         return
     }
