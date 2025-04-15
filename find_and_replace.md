@@ -11,7 +11,7 @@
 (\W+)([^\/]*):( *)Option<(.*)>,
 ```
 ### replace:
-```regex
+```rust
 #[serde(skip_serializing_if = "Option::is_none")]
 ${1}${2}:${3}Option<${4}>,
 ```
