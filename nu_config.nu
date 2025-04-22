@@ -106,7 +106,10 @@ $env.config = {
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 
-alias gh = cd ~/documents/github
+def --env gh [dir: string = ""] {
+    cd $"~/documents/github/($dir)"
+}
+
 alias cd.. = cd ..
 alias "cd ." = cd ..
 alias neofetch = bash neofetch
@@ -116,7 +119,7 @@ alias "zed update" = scoop update zed-nightly
 def "git lines" [
     --no-ansi (-n), # Disable ansi coloring in the table, allowing you to pipe into other commands that rely on the cell being an number
     --total (-t), # Only show the total diff, no table of each file
-]: nothing -> any {
+]: nothing -> table {
     if (git rev-parse --is-inside-work-tree | str trim) != "true" {
         return
     }
@@ -181,9 +184,7 @@ def "git total lines" [
         return
     }
 
-    let lines = ^git ls-files
-        | lines
-        | each {|file| { file: $file, lines: (open --raw $file | lines | length) } }
+    let lines = ^git ls-files | lines | each {|file| { file: $file, lines: (open --raw $file | lines | length) } }
 
     print $"\nTotal: (ansi green)($lines.lines | math sum)(ansi reset)"
 
@@ -194,4 +195,23 @@ def "git total lines" [
             $lines
         }
     }
+}
+
+# Ever so slightly modified version of a script made by melmass on discord
+# List binaries and examples in the current cargo workspace
+def "cargo targets" []: nothing -> table {
+  let meta = (cargo metadata --no-deps --format-version 1 | from json)
+  if ($meta | is-empty) {
+    return []
+  }
+  let targets = ($meta | get packages.targets | flatten -a)
+
+  let bins = ($targets | where ("bin" in $it.kind) | upsert kind "bin")
+  let examples = ($targets | where ("example" in $it.kind) | upsert kind "example")
+
+  $bins |
+  | append $examples
+  | select kind name src_path
+  | rename kind name path
+  | upsert path {|i| $i.path | path relative-to $meta.workspace_root }
 }
