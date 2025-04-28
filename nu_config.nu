@@ -114,6 +114,9 @@ alias cd.. = cd ..
 alias "cd ." = cd ..
 alias neofetch = bash neofetch
 alias "zed update" = scoop update zed-nightly
+alias "nu config" = config nu
+alias npx = pnpm dlx
+alias npm = pnpm
 
 # table of uncommited lines removed and added, good for egoing yourself with how much you overcomplicate things
 def "git lines" [
