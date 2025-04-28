@@ -218,3 +218,13 @@ def "cargo targets" []: nothing -> table {
   | rename kind name path
   | upsert path {|i| $i.path | path relative-to $meta.workspace_root }
 }
+
+def "nginx kill" [] {
+    let nginx_pids = (ps | where name =~ "nginx" | get pid)
+
+    $nginx_pids | each { |pid|
+        echo $"Forcefully killing Nginx process ($pid)"
+        ^taskkill /F /PID $pid
+    }
+}
+alias "kill nginx" = nginx kill
