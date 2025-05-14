@@ -20,7 +20,8 @@ pacman -Syu --noconfirm \
     prismlauncher \
     curl \
     valkey \
-    base-devel
+    base-devel \
+    starship
 
 echo "installing yay"
 git clone https://aur.archlinux.org/yay-bin.git
