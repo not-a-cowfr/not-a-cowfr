@@ -112,7 +112,7 @@ def --env gh [dir: string = ""] {
 
 alias cd.. = cd ..
 alias "cd ." = cd ..
-alias neofetch = bash neofetch
+alias neofetch = fastfetch
 alias "zed update" = scoop update zed-nightly
 alias "nu config" = config nu
 alias npx = pnpm dlx
