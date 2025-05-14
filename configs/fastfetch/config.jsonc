@@ -20,7 +20,6 @@
     },
     {
       "type": "packages",
-      "format": "{} (pacman)",
       "key": " ├ 󰏖 ",
       "keyColor": "red",
     },
@@ -77,7 +76,7 @@
       "type": "gpu",
       "format": "{1} {2} @ {12} GHz",
       "key": " ├ 󰢮 ",
-      "keyColor": "33",
+      "keyColor": "yellow",
     },
     {
       "type": "memory",
