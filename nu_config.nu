@@ -117,6 +117,7 @@ alias "zed update" = scoop update zed-nightly
 alias "nu config" = config nu
 alias npx = pnpm dlx
 alias npm = pnpm
+alias fuck = sudo !!
 
 # table of uncommited lines removed and added, good for egoing yourself with how much you overcomplicate things
 def "git lines" [
