@@ -1,5 +1,5 @@
 format = """
-[╭─](white) $directory$rust$cmd_duration
+[╭─](white) $username $directory$rust$cmd_duration
 [╰─](white)$character"""
 
 [username]
@@ -10,7 +10,8 @@ format = "[$user]($style)"
 disabled = false
 
 [cmd_duration]
-min_time = 0
+min_time = 1_000
+show_milliseconds = true
 
 [aws]
 symbol = "  "
