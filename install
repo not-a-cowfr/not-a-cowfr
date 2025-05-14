@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# untested and i have no clue what im doing so it probably doesnt work
+
+set -e
+
+USER_NAME=${SUDO_USER:-$(whoami)}
+
+echo "installing pacman packages"
+pacman -Syu --noconfirm \
+    alacritty \
+    git \
+    nginx \
+    docker \
+    docker-compose \
+    fastfetch \
+    nushell \
+    pnpm \
+    nvm \
+    prismlauncher \
+    curl \
+    valkey \
+    base-devel
+
+echo "installing yay"
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -si
+
+echo "installing AUR packages"
+yay -S --noconfirm \
+    legcord \
+    mongodb-bin \
+    mongosh-bin \
+    github-desktop-bin \
+    appflowy-bin \
+    zen-browser-bin \
+    zed-preview-bin
+
+echo "installing rust"
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+# alacritty config
+ln -sf /usr/bin/alacritty /usr/local/bin/x-terminal-emulator
+
+# make nushell default shell
+command -v nu | sudo tee -a /etc/shells
+chsh -s "$(command -v nu)"
+
+echo "all packages installed."
+
+read -p "Reboot now? [y/N] " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    reboot
+fi
