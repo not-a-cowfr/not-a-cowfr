@@ -99,6 +99,7 @@ $env.config = {
             wrapping_try_keep_words: true
             truncating_suffix: "..."
         }
+        missing_value_symbol: ❌
     }
     float_precision: 2
 }
@@ -220,12 +221,23 @@ def "cargo targets" []: nothing -> table {
   | upsert path {|i| $i.path | path relative-to $meta.workspace_root }
 }
 
-def "nginx kill" [] {
-    let nginx_pids = (ps | where name =~ "nginx" | get pid)
-
-    $nginx_pids | each { |pid|
-        echo $"Forcefully killing Nginx process ($pid)"
-        ^taskkill /F /PID $pid
-    }
+def --env "env add" [
+    var: string, # the variable to add to
+    value: string, # new variable to add
+] {
+    let current = $env | get $var
+    let new = $current | append $value
+    load-env { $var: $new }
 }
-alias "kill nginx" = nginx kill
+
+def "rm program" [
+    program: string, # program to remove
+] {
+    rm (which $program | get path | get 0)
+}
+
+def gcm [
+    message: string, # git commit message
+] {
+    git commit -m $"\"($message)\""
+}
