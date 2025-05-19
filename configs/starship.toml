@@ -1,5 +1,5 @@
 format = """
-[╭─](white) $username $directory$rust$cmd_duration
+[╭─](white) $directory$rust$cmd_duration$git_branch
 [╰─](white)$character"""
 
 [username]
