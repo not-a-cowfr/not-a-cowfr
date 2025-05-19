@@ -241,3 +241,6 @@ def gcm [
 ] {
     git commit -m $"\"($message)\""
 }
+alias gp = git push
+alias ga = git add
+alias gaa = git add --all
