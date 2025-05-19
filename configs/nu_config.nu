@@ -234,13 +234,19 @@ def "rm program" [
     program: string, # program to remove
     --no-confirm (-y), # skip confirmations
 ] {
-    let paths = (which $program | get path)
-    if ($paths | is-empty) {
+    let programs = which $program
+    let paths =  $programs | get path
+    if (($paths | is-empty)  ) {
         error make { msg: $"Program not found: ($program)" }
     } else {
         for path in $paths {
-            let confirm = input $"Remove ($path)? (y/n) "
-            if $confirm == 'n' { continue }
+            if ($programs | get type | get 0) == "custom" { continue }
+            print ""
+
+            if $no_confirm != true {
+                let confirm = input $"Remove ($path)? \(y/n\) "
+                if $confirm == 'n' { continue }
+            }
 
             rm $path
             print $"removed ($path)"
