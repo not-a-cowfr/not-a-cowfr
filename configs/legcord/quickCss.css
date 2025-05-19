@@ -1,58 +1,34 @@
-/**
- * @name midnight
- * @description a dark, customizable discord theme.
- * @author refact0r
- * @version 2.1.1
- * @invite nz87hXyvcy
- * @website https://github.com/refact0r/midnight-discord
- * @source https://github.com/refact0r/midnight-discord/blob/master/themes/midnight.theme.css
- * @authorId 508863359777505290
- * @authorLink https://www.refact0r.dev
-*/
-
-/* import theme modules */
 @import url("https://refact0r.github.io/midnight-discord/build/midnight.css");
 
 body {
-    /* font options */
     --font: "Comic Sans MS"; /* change to '' for default discord font */
     --code-font: "ComicShannsMono Nerd Font Mono"; /* change to '' for default discord font */
     font-weight: 100; /* normal text font weight. DOES NOT AFFECT BOLD TEXT */
 
-    /* sizes */
     --gap: 4px; /* spacing between panels */
     --divider-thickness: 1px; /* thickness of unread messages divider and highlighted message borders */
     --border-thickness: 1px; /* thickness of borders around main panels. DOES NOT AFFECT OTHER BORDERS */
 
-    /* animation/transition options */
     --animations: off; /* off: disable animations/transitions, on: enable animations/transitions */
 
-    /* top bar options */
-    --top-bar-height: var(
-        --gap
-    ); /* height of the top bar (discord default is 36px, old discord style is 24px, var(--gap) recommended if button position is set to titlebar) */
+    --top-bar-height: var(--gap);
     --top-bar-button-position: titlebar; /* off: default position, hide: hide buttons completely, serverlist: move inbox button to server list, titlebar: move inbox button to channel titlebar (will hide title) */
     --top-bar-title-position: off; /* off: default centered position, hide: hide title completely, left: left align title (like old discord) */
     --subtle-top-bar-title: off; /* off: default, on: hide the icon and use subtle text color (like old discord) */
 
-    /* window controls */
     --custom-window-controls: on; /* off: default window controls, on: custom window controls */
     --window-control-size: 10px; /* size of custom window controls */
 
-    /* dms button options */
     --custom-dms-icon: off; /* off: use default discord icon, hide: remove icon entirely, custom: use custom icon */
 
-    /* chatbar options */
     --custom-chatbar: off; /* off: default chatbar, aligned: chatbar aligned with the user panel, separated: chatbar separated from chat */
     --chatbar-height: 48px; /* height of the chatbar (52px by default, 47px recommended for aligned, 56px recommended for separated) */
     --chatbar-padding: 6px; /* padding of the chatbar. only applies in aligned mode. */
 }
 
-/* color options */
 :root {
     --colors: on; /* off: discord default colors, on: midnight custom colors */
 
-    /* text colors */
     --text-0: var(--bg-4); /* text on colored elements */
     --text-1: hsl(220, 45%, 95%); /* other normally white text */
     --text-2: hsl(220, 25%, 70%); /* headings and important text */
@@ -60,75 +36,53 @@ body {
     --text-4: hsl(220, 15%, 40%); /* icon buttons and channels */
     --text-5: hsl(220, 15%, 25%); /* muted channels/chats and timestamps */
 
-    /* background and dark colors */
     --bg-1: hsla(220, 15%, 20%, 1); /* dark buttons when clicked */
     --bg-2: hsl(213, 5%, 9%); /* dark buttons */
     --bg-3: hsl(220, 6%, 11%); /* spacing, secondary elements */
     --bg-4: rgb(18, 20, 20); /* main background color */
     --hover: hsla(221, 19%, 40%, 0.1); /* channels and buttons when hovered */
-    --active: hsla(
-        220,
-        19%,
-        40%,
-        0.2
-    ); /* channels and buttons when clicked or selected */
-    --active-2: hsla(
-        220,
-        19%,
-        40%,
-        0.3
-    ); /* extra state for transparent buttons */
+    --active: hsla(220, 19%, 40%, 0.2);
+    --active-2: hsla(220, 19%, 40%, 0.3);
     --message-hover: hsla(220, 0%, 0%, 0.1); /* messages when hovered */
 
-    /* accent colors */
     --accent-1: var(--blue-1); /* links and other accent text */
     --accent-2: var(--blue-2); /* small accent elements */
     --accent-3: var(--blue-3); /* accent buttons */
     --accent-4: var(--blue-4); /* accent buttons when hovered */
     --accent-5: var(--blue-5); /* accent buttons when clicked */
-    --accent-new: var(
-        --red-4
-    ); /* stuff that's normally red like mute/deafen buttons */
+    --accent-new: var(--red-4);
     --mention: linear-gradient(
         to right,
         color-mix(in hsl, var(--yellow-2), transparent 90%) 40%,
         transparent
-    ); /* background of messages that mention you */
+    );
     --mention-hover: linear-gradient(
         to right,
         color-mix(in hsl, var(--accent-2), transparent 95%) 40%,
         transparent
-    ); /* background of messages that mention you when hovered */
+    );
     --reply: linear-gradient(
         to right,
         color-mix(in hsl, var(--text-3), transparent 90%) 40%,
         transparent
-    ); /* background of messages that reply to you */
+    );
     --reply-hover: linear-gradient(
         to right,
         color-mix(in hsl, var(--text-3), transparent 95%) 40%,
         transparent
-    ); /* background of messages that reply to you when hovered */
+    );
 
-    /* status indicator colors */
     --online: var(--green-2); /* change to #40a258 for default */
     --dnd: var(--red-4); /* change to #d83a41 for default */
     --idle: var(--yellow-2); /* change to #cc954c for default */
     --streaming: var(--purple-2); /* change to ##9147ff for default */
     --offline: var(--text-4); /* change to #82838b for default offline color */
 
-    /* border colors */
     --border-light: var(--hover); /* general light border color */
     --border: var(--active); /* general normal border color */
     --border-hover: var(--active); /* border color of panels when hovered */
-    --button-border: hsl(
-        220,
-        0%,
-        100%,
-        0.1
-    ); /* neutral border color of buttons */
+    --button-border: hsl(220, 0%, 100%, 0.1);
 
-    /* base colors */
     --red-1: oklch(80% 0.18 28);
     --red-2: oklch(75% 0.18 28);
     --red-3: oklch(70% 0.18 28);
@@ -168,29 +122,24 @@ body {
 }
 
 @container root style(--colors: on) {
-    /* profile rpc buttons */
-    .themeColor_fb7f94.primary_fb7f94 {
+    .themeColor_fb7f94.primary_fb7f94 /* profile rpc buttons */ {
         background: hsla(220, 30%, 80%, 0.3) !important;
     }
 
-    /* link color */
-    a.anchor_edefb8 {
+    a.anchor_edefb8 /* link color */ {
         color: hsl(220, 100%, 74%) !important;
     }
 
-    /* user that left the guild color */
     .container__235ca,
-    .container__703b9 {
+    .container__703b9 /* user that left the guild color */ {
         color: white !important;
     }
 
-    /* fix unreadable text color on vencord restart button */
-    .vc-plugins-restart-button {
+    .vc-plugins-restart-button /* fix unreadable text color on vencord restart button */ {
         color: white !important;
     }
 
-    /* automodded messages */
-    .ephemeral__5126c.automodMessage__5126c {
+    .ephemeral__5126c.automodMessage__5126c /* automodded messages */ {
         background: linear-gradient(
             to right,
             color-mix(in hsl, var(--red-2), transparent 90%) 40%,
@@ -206,13 +155,11 @@ body {
         ) !important;
     }
 
-    /* fix vc buttons being insanly small icons */
-    .button_e131a9 {
+    .button_e131a9 /* fix vc buttons being insanly small icons */ {
         padding: 10px !important;
     }
 
-    /* fix disabled buttons being off centered from the previous fix */
-    .disabledButtonWrapper__201d5 {
+    .disabledButtonWrapper__201d5 /* fix disabled buttons being off centered from the previous fix */ {
         margin: -10px !important;
     }
 
@@ -240,54 +187,39 @@ body {
         font-size: 14px !important;
     }
 
-    /* lower message text area */
-    .channelTextArea_f75fb0 {
+    .channelTextArea_f75fb0 /* lower message text area */ {
         margin-bottom: 1.4rem !important;
     }
 
-    /* make message arent smaller height wise */
-    .inner__74017 {
+    .inner__74017 /* make message arent smaller height wise */ {
         padding-top: -1.5rem !important;
         padding-bottom: -1.5rem !important;
     }
 
-    /* make the currently typing peopel lined up correctly */
-    .typing_b88801 {
+    .typing_b88801 /* make the currently typing people lined up correctly */ {
         bottom: 0px !important;
     }
 
-    /* put equicord character counter underneath the message text box */
     /* todo: move timed out thing to the left */
-    .vc-char-counter {
+    .vc-char-counter /* put equicord character counter underneath the message text box */ {
         bottom: -23px !important;
         background: none !important;
     }
 
-    /* remove the show all voice channels button from channel list */
-    .refreshVoiceChannelsButton__29444 {
+    .refreshVoiceChannelsButton__29444 /* remove the show all voice channels button from channel list */ {
         display: none !important;
     }
 
-    /* fix the empty space in channel lists */
-    .content__99f8c {
+    .content__99f8c /* fix the empty space in channel lists */ {
         height: 1100px !important;
     }
 
-    /* remove quest popups by the account thing in bottom left */
-    .wrapper__0d616 {
+    .wrapper__0d616 /* remove quest popups by the account thing in bottom left */ {
         display: none !important;
     }
 
-    /* remove settings button cus i just havea  keybind for it, heres the snippet for that */
-
-    /*
-    document.addEventListener('keydown', function(event) {
-        if ((event.ctrlKey || event.metaKey) && event.key === ',') {
-            Vencord.Webpack.findByProps("saveAccountChanges", "open").open("My Account", null);
-        }
-    });
-     */
-    .button__67645[aria-label="User Settings"] {
+    .button__67645[aria-label="User Settings"] /* remove settings button cus i just have a keybind for it https://github.com/not-a-cowfr/not-a-cowfr/blob/main/configs/legcord/snippets/settings_keybind.js */
+    {
         display: none !important;
     }
 
