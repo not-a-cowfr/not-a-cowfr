@@ -244,3 +244,11 @@ def gcm [
 alias gp = git push
 alias ga = git add
 alias gaa = git add --all
+
+plugin add (which nu_plugin_highlight | get path | get 0)
+
+def cat [
+    file: string,
+] {
+    open $file | highlight
+}
