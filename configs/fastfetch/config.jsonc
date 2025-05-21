@@ -64,7 +64,7 @@
       "type": "host",
       "format": "{5} {1} Type {2}",
       "key": " PC        ",
-      "keyColor": "yellow;",
+      "keyColor": "yellow",
     },
     {
       "type": "cpu",
