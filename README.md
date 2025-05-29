@@ -1,3 +1,3 @@
 16
 <br><br><br>
-Desmos is my favorite programming language
+![](https://github-readme-stats.vercel.app/api/wakatime?username=not_a_cow&layout=compact&theme=transparent)
