@@ -23,6 +23,7 @@ alias npm = pnpm
 
 # misc
 alias fuck = sudo !!
+alias "zig clean" = rm -rf .zig-cache zig-out
 
 # cd into a dir in `~/documents/github` cus i do it often and im lazy
 export def --env gh [dir: string = ""] {
