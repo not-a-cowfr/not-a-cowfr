@@ -1,4 +1,8 @@
-# Environment variables
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/catppuccin_frappe.toml"
+]
+
 [env]
 opacity = "0.5"
 
