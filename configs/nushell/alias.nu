@@ -3,7 +3,8 @@ alias gp = git push
 alias ga = git add
 alias gaa = git add --all
 
-def gcm [
+# alias for `git commit -m "<message>"`
+export def gcm [
     message: string, # git commit message
 ] {
     git commit -m $"\"($message)\""
@@ -23,6 +24,7 @@ alias npm = pnpm
 # misc
 alias fuck = sudo !!
 
-def --env gh [dir: string = ""] {
+# cd into a dir in `~/documents/github` cus i do it often and im lazy
+export def --env gh [dir: string = ""] {
     cd $"~/documents/github/($dir)"
 }
