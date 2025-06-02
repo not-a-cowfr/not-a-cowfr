@@ -1,0 +1,18 @@
+# Environment variables
+[env]
+opacity = "0.5"
+
+[font]
+[font.normal]
+family = "ComicShannsMono Nerd Font Mono"
+
+[cursor]
+[cursor.style]
+shape = "Beam"
+blinking = "Off"
+
+[terminal]
+osc52 = "CopyPaste"
+
+[terminal.shell]
+program = "C:\\Users\\awgielow\\scoop\\shims\\nu.exe"
