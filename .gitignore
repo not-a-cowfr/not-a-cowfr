@@ -1,0 +1,5 @@
+# nushell stuff
+**/history.txt
+**/*.msgpackz
+**/oldenv-*.nu
+/configs/nushell/vendor
