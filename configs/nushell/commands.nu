@@ -146,3 +146,9 @@ export def --env exec [
 ] {
     nu -c $"\"($code)\""
 }
+
+# delete and reinstall node_modules
+export def "pnpm i fucked up" [] {
+    rm -rf node_modules pnpm-lock.yaml
+    pnpm i
+}
