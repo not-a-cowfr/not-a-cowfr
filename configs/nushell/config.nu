@@ -1,5 +1,3 @@
-cd ~
-
 let dark_theme = {
     separator: white
     leading_trailing_space_bg: { attr: n }
