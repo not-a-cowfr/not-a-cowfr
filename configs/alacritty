@@ -2,11 +2,14 @@
 import = [
     "~/.config/alacritty/themes/themes/catppuccin_frappe.toml"
 ]
+# working_directory = "~"
+
+[window]
+startup_mode = "Maximized"
 
 [env]
 opacity = "0.5"
 
-[font]
 [font.normal]
 family = "ComicShannsMono Nerd Font Mono"
 
