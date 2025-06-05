@@ -133,13 +133,6 @@ export def "rm program" [
     }
 }
 
-# cat with syntax highlighting, requires `nu_plugin_highlight`
-export def cat [
-    file: string,
-] {
-    open $file --raw | highlight
-}
-
 # execute some nushell code
 export def --env exec [
     code: string, # nsuhell code to execute
