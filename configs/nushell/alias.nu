@@ -20,6 +20,7 @@ alias "nu config" = config nu
 alias neofetch = fastfetch
 alias npx = pnpm dlx
 alias npm = pnpm
+alias cat = bat
 
 # misc
 alias fuck = sudo !!
