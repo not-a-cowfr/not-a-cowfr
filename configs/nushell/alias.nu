@@ -14,7 +14,6 @@ export def gcm [
 alias cd.. = cd ..
 alias "cd ." = cd ..
 alias "zed update" = scoop update zed-nightly
-alias "nu config" = config nu
 
 # use better stuff
 alias neofetch = fastfetch
@@ -29,4 +28,11 @@ alias "zig clean" = rm -rf .zig-cache zig-out
 # cd into a dir in `~/documents/github` cus i do it often and im lazy
 export def --env gh [dir: string = ""] {
     cd $"~/documents/github/($dir)"
+}
+
+# open nu dir instead of just config.nu
+export def "config nu" [] {
+    let editor = $env.config.buffer_editor;
+
+    nu -c $"($editor) ~/appdata/roaming/nushell"
 }

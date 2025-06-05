@@ -133,13 +133,6 @@ export def "rm program" [
     }
 }
 
-# execute some nushell code
-export def --env exec [
-    code: string, # nsuhell code to execute
-] {
-    nu -c $"($code)"
-}
-
 # delete and reinstall node_modules
 export def "pnpm i fucked up" [] {
     rm -rf node_modules pnpm-lock.yaml
