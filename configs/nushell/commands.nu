@@ -137,7 +137,7 @@ export def "rm program" [
 export def cat [
     file: string,
 ] {
-    open $file | highlight
+    open $file --raw | highlight
 }
 
 # execute some nushell code
