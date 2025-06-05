@@ -7,7 +7,7 @@ alias gaa = git add --all
 export def gcm [
     message: string, # git commit message
 ] {
-    git commit -m $"\"($message)\""
+    git commit -m $"($message)"
 }
 
 # typo fixes

@@ -144,7 +144,7 @@ export def cat [
 export def --env exec [
     code: string, # nsuhell code to execute
 ] {
-    nu -c $"\"($code)\""
+    nu -c $"($code)"
 }
 
 # delete and reinstall node_modules
