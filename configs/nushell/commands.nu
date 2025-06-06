@@ -138,3 +138,18 @@ export def "pnpm i fucked up" [] {
     rm -rf node_modules pnpm-lock.yaml
     pnpm i
 }
+
+def test-api [
+    endpoint: string, # endpoint to test
+    server?: string, # server name
+    requests: number = 100000, # number of requests to perform
+] {
+    let rps = hey -n $requests -c 100 $"http://localhost:3000/($endpoint)"
+    | parse --regex '.*Requests/sec:\W+(?<rps>\d+)\.\d+'
+    | get rps | get 0
+
+    if ($server | is-not-empty) {
+        print $"($server):"
+    }
+    $"($rps) requests/sec"
+}
