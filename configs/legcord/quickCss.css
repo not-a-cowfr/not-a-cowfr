@@ -218,7 +218,7 @@ body {
         display: none !important;
     }
 
-    .button__67645[aria-label="User Settings"] /* remove settings button cus i just have a keybind for it https://github.com/not-a-cowfr/not-a-cowfr/blob/main/configs/legcord/snippets/settings_keybind.js */
+    .button__67645[aria-label="User Settings"] /* remove settings button cus i just have a keybind for it https://github.com/not-a-cowfr/not-a-cowfr/blob/main/configs/legcord/snippets.md#settings-keybind */
     {
         display: none !important;
     }
