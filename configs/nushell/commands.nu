@@ -103,7 +103,7 @@ export def "cargo targets" []: nothing -> table {
 export def --env "env add" [
     var: string, # the variable to add to
     value: string, # new variable to add
-] {
+]: any -> nothing {
     let current = $env | get $var
     let new = $current | append $value
     load-env { $var: $new }
@@ -112,7 +112,7 @@ export def --env "env add" [
 export def "rm program" [
     program: string, # program to remove
     --no-confirm (-y), # skip confirmations
-] {
+]: string -> nothing {
     let programs = which $program -a | each {|row| [$row.path $row.type] }
     if (($programs | is-empty)  ) {
         error make { msg: $"Program not found: ($program)" }
@@ -136,7 +136,7 @@ def test-api [
     endpoint: string, # endpoint to test
     server?: string, # server name
     requests: number = 100000, # number of requests to perform
-] {
+]: any -> string {
     let rps = hey -n $requests -c 100 $"http://localhost:3000/($endpoint)"
     | parse --regex '.*Requests/sec:\W+(?<rps>\d+)\.\d+'
     | get rps | get 0
