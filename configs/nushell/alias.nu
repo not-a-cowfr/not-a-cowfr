@@ -24,6 +24,7 @@ alias cat = bat
 # misc
 alias fuck = sudo !!
 alias "zig clean" = rm -rf .zig-cache zig-out
+alias "pnpm clean" = rm -rf node_modules pnpm-lock.yaml
 
 # cd into a dir in `~/documents/github` cus i do it often and im lazy
 export def --env gh [dir: string = ""] {

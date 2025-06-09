@@ -133,12 +133,6 @@ export def "rm program" [
     }
 }
 
-# delete and reinstall node_modules
-export def "pnpm i fucked up" [] {
-    rm -rf node_modules pnpm-lock.yaml
-    pnpm i
-}
-
 def test-api [
     endpoint: string, # endpoint to test
     server?: string, # server name
