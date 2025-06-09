@@ -113,22 +113,21 @@ export def "rm program" [
     program: string, # program to remove
     --no-confirm (-y), # skip confirmations
 ] {
-    let programs = which $program
-    let paths =  $programs | get path
-    if (($paths | is-empty)  ) {
+    let programs = which $program -a | each {|row| [$row.path $row.type] }
+    if (($programs | is-empty)  ) {
         error make { msg: $"Program not found: ($program)" }
     } else {
-        for path in $paths {
-            if ($programs | get type | get 0) in ["custom", "keyword" "built-in", "plugin"] { continue }
+        for program in $programs {
+            if ($program.1) != "external" { continue }
             print ""
 
             if $no_confirm != true {
-                let confirm = input $"Remove ($path)? \(y/n\) "
+                let confirm = input $"Remove ($program.0)? \(Y/n\) "
                 if $confirm == 'n' { continue }
             }
 
-            rm $path
-            print $"removed ($path)"
+            rm $program.0
+            print $"(ansi red)removed ($program.0)"
         }
     }
 }
