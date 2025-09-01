@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 with pkgs; [
     vim
     alacritty
@@ -21,6 +21,7 @@ with pkgs; [
     mongosh
     github-desktop
     # zen-browser
+    inputs.zen-browser.packages."${pkgs.system}".twilight
     vscodium
     zoom-us
     zig
