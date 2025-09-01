@@ -39,6 +39,8 @@ const config_dirs = {
     "nu": "~/.config/nushell",
     "starship": "~/.config/starship.toml",
     "nix": { dir: $"/etc/nixos", sudo: true },
+    "nixos": { dir: $"/etc/nixos", sudo: true },
+    "fastfetch": "~/.config/fastfetch",
 }
 
 # new config command to open predermined directories instead of only working for nushell
@@ -51,7 +53,8 @@ export def "config" [
 
     mut flags = "";
     mut sudo = ""
-    if ((dir | describe) != "string") {
+
+    if (($dir | describe) != "string") {
         let obj = $dir;
         $dir = $obj | get dir;
         if ($obj | get sudo) {
