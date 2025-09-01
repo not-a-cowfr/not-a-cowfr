@@ -13,13 +13,13 @@ export def gcm [
 # typo fixes
 alias cd.. = cd ..
 alias "cd ." = cd ..
-alias "zed update" = scoop update zed-nightly
 
 # use better stuff
 alias neofetch = fastfetch
 alias npx = pnpm dlx
 alias npm = pnpm
 alias cat = bat
+alias code = codium
 
 # misc
 alias fuck = sudo !!
@@ -28,7 +28,7 @@ alias "pnpm clean" = rm -rf node_modules pnpm-lock.yaml
 
 # cd into a dir in `~/documents/github` cus i do it often and im lazy
 export def --env gh [dir: string = ""]: nothing -> nothing {
-    cd $"~/documents/github/($dir)"
+    cd $"~/Documents/GitHub/($dir)"
 }
 
 # open nu dir instead of just config.nu

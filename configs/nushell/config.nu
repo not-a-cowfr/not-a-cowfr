@@ -88,7 +88,7 @@ let dark_theme = {
 
 $env.config = {
     show_banner: false
-    buffer_editor: "zed"
+    buffer_editor: "codium"
     color_config: $dark_theme
     table: {
         mode: rounded
@@ -106,8 +106,6 @@ $env.config = {
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
-
-plugin add (which nu_plugin_highlight | get path | get 0)
 
 source alias.nu
 source commands.nu
