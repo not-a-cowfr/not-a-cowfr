@@ -1,9 +1,3 @@
-[general]
-import = [
-    "~/.config/alacritty/themes/themes/catppuccin_frappe.toml"
-]
-# working_directory = "~"
-
 [window]
 startup_mode = "Maximized"
 
@@ -22,4 +16,4 @@ blinking = "Off"
 osc52 = "CopyPaste"
 
 [terminal.shell]
-program = "C:\\Users\\awgielow\\scoop\\shims\\nu.exe"
+program = "/run/current-system/sw/bin/nu"
