@@ -1,30 +1,39 @@
 { pkgs, inputs, ... }:
 with pkgs; [
-    vim
+    # dev apps
     alacritty
-    git
-    nginx
+    github-desktop
+    vscodium
+
+    # regular apps
+    legcord
+    prismlauncher
+    # zen-browser
+    inputs.zen-browser.packages."${pkgs.system}".twilight
+    zoom-us
+
+    # languages
+    bun
+    rustup
+    zig
+
+    # cli tools
+    bat
+    curl
     docker
     docker-compose
     fastfetch
-    nushell
-    nodePackages.pnpm
-    bun
     fnm
-    prismlauncher
-    curl
-    valkey
-    rustup
-    starship
-    legcord
+    git
+    nginx
+    nodePackages.pnpm
     mongodb
     mongosh
-    github-desktop
-    # zen-browser
-    inputs.zen-browser.packages."${pkgs.system}".twilight
-    vscodium
-    zoom-us
-    zig
-    bat
+    nushell
     ripgrep
+    valkey
+    vim
+
+    # deps
+    starship
 ]
