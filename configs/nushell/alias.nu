@@ -31,9 +31,31 @@ export def --env gh [dir: string = ""]: nothing -> nothing {
     cd $"~/Documents/GitHub/($dir)"
 }
 
-# open nu dir instead of just config.nu
+
+
+const vscodium_root_flags = "--no-sandbox --user-data-dir=\"~/.vscodium-root\"";
+
+const config_dirs = {
+    "nu": "~/.config/nushell",
+    "starship": "~/.config/starship.toml",
+    "nix": $"/etc/nixos ($vscodium_root_flags)",
+}
+
+# new config command to open predermined directories instead of only working for nushell
+export def "config" [
+    app: string, # name of the app you want to open the config for
+]: nothing -> nothing {
+    let editor = $env.config.buffer_editor;
+
+    let dir = $config_dirs | get $app | expand;
+
+    nu -c $"($editor) ($dir)"
+}
+
+# open the nu config dir instead of just config.nu
+# has to be done like this because config nu clashes with the builtin
 export def "config nu" []: nothing -> nothing {
     let editor = $env.config.buffer_editor;
 
-    nu -c $"($editor) ~/appdata/roaming/nushell"
+    nu -c $"($editor) ~/.config/nushell"
 }

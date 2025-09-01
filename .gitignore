@@ -3,3 +3,4 @@
 **/*.msgpackz
 **/oldenv-*.nu
 /configs/nushell/vendor
+~/
