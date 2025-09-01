@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -63,9 +63,8 @@
     ];
   };
 
-
   nixpkgs.config.allowUnfree = true;
-  environment.systemPackages = with pkgs; import ./packages.nix { inherit pkgs; };
+  environment.systemPackages = with pkgs; import ./packages.nix { inherit pkgs inputs; };
 
   programs.firefox.enable = true;
 
