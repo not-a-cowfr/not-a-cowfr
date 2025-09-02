@@ -33,8 +33,7 @@ export def --env gh [dir: string = ""]: nothing -> nothing {
 }
 
 
-
-const vscodium_root_flags = "--no-sandbox --user-data-dir=\"~/.vscodium-root\"";
+let vscodium_root_flags = $"--no-sandbox --user-data-dir=/home/(whoami)/.config/VSCodium";
 
 const config_dirs = {
     "nu": "~/.config/nushell",
