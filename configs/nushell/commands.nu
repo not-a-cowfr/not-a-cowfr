@@ -146,3 +146,14 @@ def test-api [
     }
     $"($rps) requests/sec"
 }
+
+def "kill nginx" [] {
+    sudo ss -tlnp
+        | rg nginx
+        | parse --regex ".*pid=(?<pid>\\d+).*"
+        | get pid
+        | uniq
+        | each {|p|
+            sudo kill ($p | into int)
+        };
+}
