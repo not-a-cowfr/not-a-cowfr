@@ -33,6 +33,8 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  hardware.openrazer.enable = true;
+
   services.xserver.enable = true;
 
   services.displayManager.sddm.enable = true;
@@ -44,6 +46,8 @@
   };
 
   services.printing.enable = true;
+
+  services.flatpak.enable = true;
 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -57,7 +61,7 @@
   users.users.andrew = {
     isNormalUser = true;
     description = "Andrew Gielow";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "openrazer" ];
     packages = with pkgs; [
       kdePackages.kate
     ];
@@ -67,6 +71,12 @@
   environment.systemPackages = with pkgs; import ./packages.nix { inherit pkgs inputs; };
 
   programs.firefox.enable = true;
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
 
   # programs.git = {
   #   enable = true;
