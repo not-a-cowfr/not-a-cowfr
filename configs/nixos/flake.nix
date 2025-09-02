@@ -7,7 +7,7 @@
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
-  outputs = { nixpkgs, zen-browser, nix-minecraft, ... } @ inputs: 
+  outputs = { nixpkgs, zen-browser, nix-minecraft, ... } @ inputs:
     {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
