@@ -20,6 +20,7 @@ alias npx = pnpm dlx
 alias npm = pnpm
 alias cat = bat
 alias code = codium
+alias "cargo install" = cargo binstall -y
 
 # misc
 alias fuck = sudo !!
