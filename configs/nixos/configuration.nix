@@ -78,14 +78,15 @@
     dedicatedServer.openFirewall = true;
   };
 
-  # programs.git = {
-  #   enable = true;
-  #   userName = "not-a-cowfr";
-  #   userEmail = "104255555+not-a-cowfr@users.noreply.github.com";
-  #   extraConfig = {
-  #       init.defaultBranch = "main";
-  #   };
-  # };
+  programs.git.config = {
+    enable = true;
+    userName = "not a cow";
+    userEmail = "104255555+not-a-cowfr@users.noreply.github.com";
+    config = {
+        init.defaultBranch = "main";
+        credential.helper = "store";
+    };
+  };
 
   services.openssh.enable = true;
 
