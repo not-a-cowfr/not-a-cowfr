@@ -19,29 +19,34 @@ with pkgs; [
 
     # languages
     bun
+    gcc
     rustup
     zig
 
     # cli tools
     bat
+    cargo-flamegraph
     curl
+    dioxus-cli
     docker
     docker-compose
     fastfetch
     fnm
     git
-    nginx
-    nodePackages.pnpm
     mongodb
     mongosh
+    nginx
+    nodePackages.pnpm
     nushell
     ripgrep
+    rojo
     valkey
     vim
-    rojo
 
     # deps
     starship
     steamcmd
     openrazer-daemon
+    openssl
+    pkg-config
 ]
