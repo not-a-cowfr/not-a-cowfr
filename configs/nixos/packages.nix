@@ -36,13 +36,14 @@ with pkgs; [
   mongodb
   mongosh
   nginx
+  nixpkgs-fmt
   nodePackages.pnpm
   nushell
+  rcon-cli
   ripgrep
   rojo
   valkey
   vim
-  nixpkgs-fmt
 
   # deps
   starship

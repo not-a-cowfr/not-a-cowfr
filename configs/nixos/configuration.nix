@@ -4,11 +4,13 @@
   # imports
   imports = [
     ./hardware-configuration.nix
+    inputs.nix-minecraft.nixosModules.minecraft-servers
   ];
 
   # nix
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
 
   # bootloader
   boot.loader.systemd-boot.enable = true;
@@ -67,63 +69,102 @@
   # openssh
   services.openssh.enable = true;
 
+  # nginx
+  services.nginx = {
+    enable = true;
+    virtualHosts."bot-backend.notacow.fr" = {
+      addSSL = true;
+      enableACME = true;
+
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:3000";
+        extraConfig = ''
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+        '';
+      };
+    };
+  };
+
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "awgielow@gmail.com";
+  };
+  systemd.services.nginx.serviceConfig.ReadWritePaths = [ "/var/log/nginx/" ];
+
+
   # minecraft server
-  # services.minecraft-servers = {
-  #   enable = true;
-  #   eula = true;
-  #   openFirewall = true;
+  services.minecraft-servers = {
+    enable = true;
+    eula = true;
+    openFirewall = true;
 
-  #   # for seperate mods
-  #   # servers.fabric = {
-  #   #   enable = true;
+    # for seperate mods
+    servers.fabric = {
+      enable = true;
+      autoStart = true;
 
-  #   #   package = pkgs.fabricServers.fabric-1_21_8.override {
-  #   #     loaderVersion = "0.17.2";
-  #   #   };
+      package = pkgs.fabricServers.fabric-1_20_1.override {
+        loaderVersion = "0.17.2";
+      };
 
-  #   #   symlinks = {
-  #   #     mods = pkgs.linkFarmFromDrvs "mods" (
-  #   #       builtins.attrValues {
-  #   #         Fabric-API = pkgs.fetchurl {
-  #   #           url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/9YVrKY0Z/fabric-api-0.115.0%2B1.21.8.jar";
-  #   #           sha512 = "e5f3c3431b96b281300dd118ee523379ff6a774c0e864eab8d159af32e5425c915f8664b1cd576f20275e8baf995e016c5971fea7478c8cb0433a83663f2aea8";
-  #   #         };
-  #   #         Backpacks = pkgs.fetchurl {
-  #   #           url = "https://cdn.modrinth.com/data/MGcd6kTf/versions/Ci0F49X1/1.2.1-backpacks_mod-1.21.2-1.21.3.jar";
-  #   #           sha512 = "6efcff5ded172d469ddf2bb16441b6c8de5337cc623b6cb579e975cf187af0b79291b91a37399a6e67da0758c0e0e2147281e7a19510f8f21fa6a9c14193a88b";
-  #   #         };
-  #   #       }
-  #   #     );
-  #   #   };
-  #   # };
+      symlinks = {
+        mods = pkgs.linkFarmFromDrvs "mods" (
+          builtins.attrValues {
+            Fabric-API = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/UapVHwiP/fabric-api-0.92.6%2B1.20.1.jar";
+              sha512 = "2bd2ed0cee22305b7ff49597c103a57c8fbe5f64be54a906796d48b589862626c951ff4cbf5cb1ed764a4d6479d69c3077594e693b7a291240eeea2bb3132b0c";
+            };
+            Create = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/Xbc0uyRg/versions/7Ub71nPb/create-fabric-0.5.1-j-build.1631%2Bmc1.20.1.jar";
+              sha512 = "73ff936492c857ae411c10cae0194d64a56b98a1a7a9478ca13fe2a6e3ee155e327cf4590a3888aaa671561b4cf74de97f2f44224d7981b03a546e36236c3de2";
+            };
+          }
+        );
+      };
 
-  #   # for modpack
-  #   let
-  #     modpack = pkgs.fetchPackwizModpack {
-  #       url = "";
-  #       packHash = "";
-  #     };
-  #     mcVersion = modpack.manifest.versions.minecraft;
-  #     fabricVersion = modpack.manifest.versions.fabric;
-  #     serverVersion = lib.replaceStrings [ "." ] [ "_" ] "fabric-${mcVersion}";
-  #   in
-  #   {
-  #   cool-modpack = {
-  #     enable = true;
-  #     package = pkgs.fabricServers.${serverVersion}.override { loaderVersion = fabricVersion; };
-  #     symlinks = {
-  #       "mods" = "${modpack}/mods";
-  #     };
-  #     files = {
-  #       "config" = "${modpack}/config";
-  #       # "config/mod1.yml" = "${modpack}/config/mod1.yml";
-  #       # "config/server-specific.conf".value = {
-  #       #   example = "foo-bar";
-  #       # };
-  #     };
-  #   };
-  # };
-  # };
+      serverProperties = {
+        difficulty = 3;
+        gamemode = "survival";
+        motd = "hi :)";
+        
+        "gamerule.keepInventory" = "true";
+
+        enable-rcon = true;
+        "rcon.password" = "ionknow";
+        "rcon.port" = 25566;
+      };
+    };
+
+    # for modpack
+    #   let
+    #     modpack = pkgs.fetchPackwizModpack {
+    #       url = "";
+    #       packHash = "";
+    #     };
+    #     mcVersion = modpack.manifest.versions.minecraft;
+    #     fabricVersion = modpack.manifest.versions.fabric;
+    #     serverVersion = lib.replaceStrings [ "." ] [ "_" ] "fabric-${mcVersion}";
+    #   in
+    #   {
+    #   cool-modpack = {
+    #     enable = true;
+    #     package = pkgs.fabricServers.${serverVersion}.override { loaderVersion = fabricVersion; };
+    #     symlinks = {
+    #       "mods" = "${modpack}/mods";
+    #     };
+    #     files = {
+    #       "config" = "${modpack}/config";
+    #       # "config/mod1.yml" = "${modpack}/config/mod1.yml";
+    #       # "config/server-specific.conf".value = {
+    #       #   example = "foo-bar";
+    #       # };
+    #     };
+    #   };
+    # };
+  };
 
   # virtualisation
   virtualisation.docker.enable = true;
