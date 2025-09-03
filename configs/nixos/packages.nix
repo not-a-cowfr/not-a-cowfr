@@ -49,6 +49,6 @@ with pkgs; [
   starship
   steamcmd
   openrazer-daemon
-  openssl
-  pkg-config
+  # openssl
+  # pkg-config
 ]
