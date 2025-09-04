@@ -257,10 +257,8 @@
           window-types = [ "normal" ];
         };
         apply = {
-          desktop = {
-            value = 1;
-            apply = "initially";
-          };
+          desktops = "Desktop_1";
+          desktopsrule = "2";
         };
       }
       {
@@ -273,14 +271,12 @@
           window-types = [ "normal" ];
         };
         apply = {
-          desktop = {
-            value = 2;
-            apply = "initially";
-          };
+          desktops = "Desktop_2";
+          desktopsrule = "3";
         };
       }
       {
-        description = "Assign Zoom to Desktop 3";
+        description = "Assign Zoom to Desktop 4";
         match = {
           window-class = {
             value = "zoom";
@@ -289,10 +285,8 @@
           window-types = [ "normal" ];
         };
         apply = {
-          desktop = {
-            value = 4;
-            apply = "initially";
-          };
+          desktops = "Desktop_4";
+          desktopsrule = "2";
         };
       }
     ];
@@ -304,7 +298,7 @@
       cursor.theme = "breeze_cursors";
       theme = "Nordic";
       colorScheme = "BreezeDark";
-      iconTheme = "Nordic-darker";
+      iconTheme = "Breeze Dark";
       wallpaper = "/etc/nixos/modules/home-manager/misc/wallpaper/wallpaper.jpg";
       # splashScreen = "Illusion";
     };

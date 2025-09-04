@@ -8,10 +8,6 @@
         startup_mode = "Maximized";
       };
 
-      env = {
-        opacity = "0.5";
-      };
-
       font = {
         normal = {
           family = "ComicShannsMono Nerd Font Mono";
