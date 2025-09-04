@@ -1,11 +1,10 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  userConfig,
-  pkgs,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, userConfig
+, pkgs
+, ...
 }:
 {
   nixpkgs = {
@@ -23,10 +22,12 @@
   );
 
   nix.nixPath = [ "/etc/nix/path" ];
-  environment.etc = lib.mapAttrs' (name: value: {
-    name = "nix/path/${name}";
-    value.source = value.flake;
-  }) config.nix.registry;
+  environment.etc = lib.mapAttrs'
+    (name: value: {
+      name = "nix/path/${name}";
+      value.source = value.flake;
+    })
+    config.nix.registry;
 
   nix = {
     settings = {
@@ -159,8 +160,6 @@
   virtualisation.docker.rootless.setSocketVariable = true;
 
   programs.xwayland.enable = true;
-
-  documentation.man.enable = false;
 
   fonts.packages = with pkgs; [
     nerd-fonts.comic-shanns-mono

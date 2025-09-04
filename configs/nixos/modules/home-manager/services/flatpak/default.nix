@@ -1,9 +1,8 @@
-{
-  config,
-  inputs,
-  lib,
-  pkgs,
-  ...
+{ config
+, inputs
+, lib
+, pkgs
+, ...
 }:
 {
   imports = [ inputs.nix-flatpak.homeManagerModules.nix-flatpak ];
@@ -11,10 +10,10 @@
   config = {
     services.flatpak = {
       enable = true;
-      packages = [ 
+      packages = [
         "org.vinegarhq.Sober"
         "org.vinegarhq.Vinegar"
-       ];
+      ];
       uninstallUnmanaged = true;
       update.auto.enable = false;
     };
