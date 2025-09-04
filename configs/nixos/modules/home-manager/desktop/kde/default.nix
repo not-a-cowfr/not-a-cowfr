@@ -305,7 +305,7 @@
       theme = "Nordic";
       colorScheme = "BreezeDark";
       iconTheme = "Nordic-darker";
-      wallpaper = "${config.home.homeDirectory}/.local/share/wallpapers/plants.jpg";
+      wallpaper = "/etc/nixos/modules/home-manager/misc/wallpaper/wallpaper.jpg";
       # splashScreen = "Illusion";
     };
 
