@@ -36,7 +36,6 @@ export def --env gh [dir: string = ""]: nothing -> nothing {
 let vscodium_root_flags = $"--no-sandbox --user-data-dir=/home/(whoami)/.config/VSCodium";
 
 const config_dirs = {
-    "nu": "~/.config/nushell",
     "starship": "~/.config/starship.toml",
     "nix": { dir: $"/etc/nixos", sudo: true },
     "nixos": { dir: $"/etc/nixos", sudo: true },
@@ -72,4 +71,21 @@ export def "config nu" []: nothing -> nothing {
     let editor = $env.config.buffer_editor;
 
     nu -c $"($editor) ~/.config/nushell"
+}
+
+# nixos
+def rebuild [] {
+    let choices = ["nixos", "home-manager"]
+    let selected = ($choices | str join "\n" | fzf --multi | lines)
+
+    if ($selected | any {|x| $x == "nixos"}) {
+        let host = (hostname | str trim)
+        sudo nixos-rebuild switch --flake $"/etc/nixos#($host)"
+    }
+
+    if ($selected | any {|x| $x == "home-manager"}) {
+        let user = (whoami | str trim)
+        let host = (hostname | str trim)
+        home-manager switch --flake $"/etc/nixos#($user)@($host)"
+    }
 }
