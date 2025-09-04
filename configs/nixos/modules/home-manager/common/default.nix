@@ -1,14 +1,14 @@
-{
-  outputs,
-  userConfig,
-  pkgs,
-  ...
+{ outputs
+, userConfig
+, pkgs
+, ...
 }:
 {
   imports = [
     ../programs/alacritty
     ../programs/bat
     ../programs/fastfetch
+    ../programs/fzf
     ../programs/git
     ../programs/go
     ../programs/gpg
@@ -39,7 +39,7 @@
     jq
     ripgrep
     curl
-    fastfetch
+    # fastfetch
     nixpkgs-fmt
     tree
 

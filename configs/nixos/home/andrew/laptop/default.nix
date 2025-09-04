@@ -1,4 +1,4 @@
-{ nhModules, pkgs, ... }:
+{ nhModules, pkgs, inputs, ... }:
 {
   imports = [
     "${nhModules}/common"
@@ -9,7 +9,7 @@
 
   home.packages = with pkgs; [
     # dev apps
-    alacritty
+    # alacritty
     github-desktop
     vscodium
 
@@ -21,6 +21,7 @@
     steam-run
     spotify
     # zen-browser
+    inputs.zen-browser.packages."${pkgs.system}".twilight
     zoom-us
 
     # languages
@@ -29,13 +30,13 @@
     zig
 
     # cli tools
-    bat
+    # bat
     cargo-flamegraph
     dioxus-cli
     docker
     docker-compose
     fnm
-    git
+    # git
     mongodb
     mongosh
     nginx
@@ -47,8 +48,8 @@
     vim
 
     # deps
-    starship
-    steamcmd 
+    # starship
+    steamcmd
   ];
 
   home.stateVersion = "25.05";

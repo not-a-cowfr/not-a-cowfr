@@ -1,8 +1,7 @@
-{
-  inputs,
-  hostname,
-  nixosModules,
-  ...
+{ inputs
+, hostname
+, nixosModules
+, ...
 }:
 {
   imports = [

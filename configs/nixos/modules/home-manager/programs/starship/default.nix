@@ -5,8 +5,8 @@
 
     settings = {
       format = ''
-[╭─](white) $directory$rust$cmd_duration$git_branch
-[╰─](white)$character'';
+        [╭─](white) $directory$rust$cmd_duration$git_branch
+        [╰─](white)$character'';
 
       username = {
         show_always = true;

@@ -18,14 +18,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs =
-    {
-      self,
-      home-manager,
-      nixpkgs,
-      ...
+    { self
+    , home-manager
+    , nixpkgs
+    , zen-browser
+    , ...
     }@inputs:
     let
       inherit (self) outputs;

@@ -1,10 +1,9 @@
-{
-  config,
-  inputs,
-  lib,
-  nhModules,
-  pkgs,
-  ...
+{ config
+, inputs
+, lib
+, nhModules
+, pkgs
+, ...
 }:
 {
   imports = [
@@ -142,9 +141,7 @@
           {
             iconTasks = {
               launchers = [
-                # "applications:kdesystemsettings.desktop"
-                # "applications:systemsettings.desktop"
-                "applications:org.kde.plasma.settings.open"
+                "applications:systemsettings.desktop"
                 "applications:org.kde.dolphin.desktop"
                 "applications:Alacritty.desktop"
                 "applications:github-desktop.desktop"
