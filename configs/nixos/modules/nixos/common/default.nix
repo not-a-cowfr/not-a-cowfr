@@ -95,12 +95,6 @@
     variant = "";
   };
 
-  # wayland support for chromium and electron apps
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    XCURSOR_SIZE = "24";
-  };
-
   environment.localBinInPath = true;
 
   services.printing.enable = false;
