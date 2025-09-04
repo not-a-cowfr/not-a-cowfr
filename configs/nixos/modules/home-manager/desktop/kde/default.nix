@@ -294,13 +294,14 @@
     workspace = {
       enableMiddleClickPaste = false;
       clickItemTo = "select";
-      lookAndFeel = "org.kde.breezedark.desktop";
+      windowDecorations.library = "org.kde.breeze";
+      windowDecorations.theme = "Breeze";
       cursor.theme = "breeze_cursors";
       theme = "Nordic";
       colorScheme = "BreezeDark";
       iconTheme = "Breeze Dark";
       wallpaper = "/etc/nixos/modules/home-manager/misc/wallpaper/wallpaper.jpg";
-      # splashScreen = "Illusion";
+      splashScreen.theme = "Illusion";
     };
 
     configFile = {
