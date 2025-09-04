@@ -16,7 +16,7 @@ in
     ffmpegthumbs
     kate
     khelpcenter
-    # konsole
+    konsole
     krdp
     plasma-browser-integration
     xwaylandvideobridge

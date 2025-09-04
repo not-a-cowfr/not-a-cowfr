@@ -28,7 +28,7 @@
       terminal = {
         osc52 = "CopyPaste";
         shell = {
-          program = "/run/current-system/sw/bin/nu";
+          program = "/home/andrew/.nix-profile/bin/nu";
         };
       };
     };
