@@ -20,6 +20,8 @@
     };
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
   outputs =
@@ -27,6 +29,7 @@
     , home-manager
     , nixpkgs
     , zen-browser
+    , nix-minecraft
     , ...
     }@inputs:
     let
@@ -50,7 +53,10 @@
             userConfig = users.${username};
             nixosModules = ./modules/nixos;
           };
-          modules = [ ./hosts/${hostname} ];
+          modules = [ 
+            ./hosts/${hostname}
+            inputs.nix-minecraft.nixosModules.minecraft-servers
+          ];
         };
 
       mkHomeConfiguration =
@@ -63,7 +69,7 @@
             nhModules = "${self}/modules/home-manager";
           };
           modules = [
-            ./home/${username}/${hostname}
+            ./home/${hostname}/${username}
           ];
         };
     in
