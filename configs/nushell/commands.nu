@@ -192,3 +192,34 @@ def "backup new" [
         cp -r $item $version_dir;
     }
 }
+
+# opens a select menu to reuild and switch nixos and/or home-manager
+def "nix rebuild" [] {
+    let choices = ["nixos", "home-manager"]
+    let selected = ($choices | str join "\n" | fzf --multi | lines)
+
+    if ($selected | any {|x| $x == "nixos"}) {
+        let host = (hostname | str trim)
+        sudo nixos-rebuild switch --flake $"/etc/nixos#($host)"
+    }
+
+    if ($selected | any {|x| $x == "home-manager"}) {
+        let user = (whoami | str trim)
+        let host = (hostname | str trim)
+        home-manager switch --flake $"/etc/nixos#($user)@($host)"
+    }
+}
+
+# opens a select menu of nixos generations to remove
+def "nix remove-generations" [] {
+    let generations = nix list-generations | where isActive != "True";
+    
+    let selected = ($generations | get generation | str join "\n" | fzf --multi | lines) | str join " ";
+
+    sudo nix-env -p /nix/var/nix/profiles/system --delete-generations $selected
+}
+
+def "nix list-generations" []: nothing -> table {
+    nixos-rebuild list-generations
+        | parse --regex "(?<generation>\\d+)\\W+(?<buildDate>[-\\d]+)\\W+(?<buildTime>[:\\d]+)\\W+(?<nixosVersion>[\\.\\w]+)\\W+(?<kernalVersion>[\\.\\d]+)\\W+(?<revision>\\w+)\\W+(?<specialisation>.+)\\W+(?<isActive>True|False)"
+}
