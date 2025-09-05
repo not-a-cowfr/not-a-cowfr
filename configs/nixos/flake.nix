@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # hardware.url = "github:nixos/nixos-hardware";
+    # nixos-hardware.url = "github:nixos/nixos-hardware";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=v0.6.0";
 
@@ -53,7 +53,7 @@
             userConfig = users.${username};
             nixosModules = ./modules/nixos;
           };
-          modules = [ 
+          modules = [
             ./hosts/${hostname}
             inputs.nix-minecraft.nixosModules.minecraft-servers
           ];
