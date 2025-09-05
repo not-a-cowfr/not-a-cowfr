@@ -72,20 +72,3 @@ export def "config nu" []: nothing -> nothing {
 
     nu -c $"($editor) ~/.config/nushell"
 }
-
-# nixos
-def rebuild [] {
-    let choices = ["nixos", "home-manager"]
-    let selected = ($choices | str join "\n" | fzf --multi | lines)
-
-    if ($selected | any {|x| $x == "nixos"}) {
-        let host = (hostname | str trim)
-        sudo nixos-rebuild switch --flake $"/etc/nixos#($host)"
-    }
-
-    if ($selected | any {|x| $x == "home-manager"}) {
-        let user = (whoami | str trim)
-        let host = (hostname | str trim)
-        home-manager switch --flake $"/etc/nixos#($user)@($host)"
-    }
-}
