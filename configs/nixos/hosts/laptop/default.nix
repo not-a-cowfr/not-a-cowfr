@@ -13,7 +13,7 @@
   ];
 
   nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
-  
+
   networking.hostName = hostname;
 
   system.stateVersion = "25.05";
