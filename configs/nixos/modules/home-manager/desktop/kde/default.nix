@@ -85,11 +85,16 @@
       touchpads = [
         {
           enable = true;
+
           disableWhileTyping = true;
           middleButtonEmulation = true;
-          name = "GXTP5100:00 27C6:01E0 Touchpad";
-          naturalScroll = true;
+
           pointerSpeed = 0;
+          accelerationProfile = "none";
+          scrollSpeed = 0.2;
+          naturalScroll = true;
+
+          name = "GXTP5100:00 27C6:01E0 Touchpad";
           vendorId = "27C6";
           productId = "01E0";
         }
@@ -312,8 +317,18 @@
           BrowserApplication = "zen-twilight.desktop";
         };
       };
+      kglobalshortcutsrc = {
+        plasmashell = {
+          "show-on-mouse-pos" = lib.mkForce "Meta+V,Meta+V,Show Clipboard Items at Mouse Position";
+        };
+      };
       klaunchrc.FeedbackStyle.BusyCursor = false;
       klipperrc.General.MaxClipItems = 1000;
+      kwinrc = {
+        TabBox = {
+          HighlightWindows = false;
+        };
+      };
       plasmanotifyrc = {
         DoNotDisturb = {
           WhenFullscreen = false;
