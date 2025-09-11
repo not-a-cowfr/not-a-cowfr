@@ -201,8 +201,8 @@ body {
         padding-top: 0.5rem !important;
     }
 
-    .typing_b88801 /* make the currently typing people lined up correctly */ {
-        bottom: 0px !important;
+    .typingDots_b88801 /* make the currently typing people below the text input box */ {
+        margin-bottom: -9.25rem !important;
     }
 
     /* todo: move timed out thing to the left */
