@@ -191,9 +191,14 @@ body {
         margin-bottom: 1.4rem !important;
     }
 
-    .inner__74017 /* make message arent smaller height wise */ {
+    .inner__74017 /* make message area smaller height wise */ {
         padding-top: -1.5rem !important;
-        padding-bottom: -1.5rem !important;
+        padding-bottom: -2.5rem !important;
+    }
+    
+    .attachWrapper__0923f {
+        padding-bottom: 0.25rem !important;
+        padding-top: 0.5rem !important;
     }
 
     .typing_b88801 /* make the currently typing people lined up correctly */ {
@@ -202,7 +207,7 @@ body {
 
     /* todo: move timed out thing to the left */
     .vc-char-counter /* put equicord character counter underneath the message text box */ {
-        bottom: -23px !important;
+        bottom: -20px !important;
         background: none !important;
     }
 
