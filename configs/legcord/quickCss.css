@@ -183,6 +183,9 @@ body {
     .editor__1b31f {
         font-size: 14px !important;
     }
+    .inlineCode_ada32f {
+        font-size: 14px !important;
+    }
     code {
         font-size: 14px !important;
     }
@@ -201,8 +204,12 @@ body {
         padding-top: 0.5rem !important;
     }
 
-    .typingDots_b88801 /* make the currently typing people below the text input box */ {
+    .typingDots_b88801 /* make the currently typing people lined up correctly */ {
         margin-bottom: -9.25rem !important;
+    }
+
+    .scrollerSpacer__36d07 {
+        height: 1.5rem !important;
     }
 
     /* todo: move timed out thing to the left */
