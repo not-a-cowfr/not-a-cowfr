@@ -13,6 +13,7 @@
     ../programs/go
     ../programs/gpg
     ../programs/starship
+    # ../programs/zen
     ../services/flatpak
   ];
 

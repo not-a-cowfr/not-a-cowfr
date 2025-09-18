@@ -39,6 +39,8 @@
         "rcon.password" = "ionknow";
         "rcon.port" = 25575;
       };
+
+      jvmOpts = "-Xms4096M -Xmx6144M";
     };
   };
 }

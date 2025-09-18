@@ -19,7 +19,13 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake/beta";
+      inputs = {
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };

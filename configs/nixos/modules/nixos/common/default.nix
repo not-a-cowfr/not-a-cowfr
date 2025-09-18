@@ -51,6 +51,7 @@
     kernelPackages = pkgs.linuxPackages_latest;
     loader.efi.canTouchEfiVariables = true;
 
+    loader.timeout = 2;
     loader.systemd-boot.enable = false;
 
     loader.grub = {
@@ -91,6 +92,8 @@
     plymouth-quit-wait.enable = false;
   };
 
+  programs.nix-ld.enable = true;
+
   time.timeZone = "America/Los_Angeles";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -117,6 +120,8 @@
     layout = "us";
     variant = "";
   };
+
+  services.dbus.enable = true;
 
   environment.localBinInPath = true;
 
