@@ -212,14 +212,23 @@ def "nix rebuild" [] {
 
 # opens a select menu of nixos generations to remove
 def "nix remove-generations" [] {
-    let generations = nix list-generations | where isActive != "True";
+    let generations = nix list-generations | where not isActive;
     
-    let selected = ($generations | get generation | str join "\n" | fzf --multi | lines) | str join " ";
+    let selected = $generations | get generation | str join "\n" | fzf --multi | lines | into int;
 
-    sudo nix-env -p /nix/var/nix/profiles/system --delete-generations $selected
+    if ($selected) {
+        sudo nix-env -p /nix/var/nix/profiles/system --delete-generations ...$selected
+    }
 }
 
 def "nix list-generations" []: nothing -> table {
     nixos-rebuild list-generations
-        | parse --regex "(?<generation>\\d+)\\W+(?<buildDate>[-\\d]+)\\W+(?<buildTime>[:\\d]+)\\W+(?<nixosVersion>[\\.\\w]+)\\W+(?<kernalVersion>[\\.\\d]+)\\W+(?<revision>\\w+)\\W+(?<specialisation>.+)\\W+(?<isActive>True|False)"
+        | parse --regex "(?<generation>\\d+)\\s+(?<buildDate>[-\\d]+ [:\\d]+)\\s+(?<nixosVersion>[\\.\\w]+)\\s+(?<kernalVersion>[\\.\\d]+)\\s+(?<revision>\\w+)\\s+(?<specialisation>\\[.*\\])\\s+(?<isActive>True|False)"
+        | update generation { into int }
+        | update buildDate { into datetime }
+        | update specialisation { from json }
+        | update isActive { into bool }
+}
+
+let vscodium_root_flags = $"--no-sandbox --user-data-dir=/home/(whoami)/.config/VSCodium";
 }
