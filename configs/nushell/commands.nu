@@ -231,4 +231,43 @@ def "nix list-generations" []: nothing -> table {
 }
 
 let vscodium_root_flags = $"--no-sandbox --user-data-dir=/home/(whoami)/.config/VSCodium";
+
+const config_dirs = {
+    "starship": "~/.config/starship.toml",
+    "alacritty": "~/.config/alacritty/alacritty.toml",
+    "ghostty": "~/.config/ghostty/config",
+    "nix": { dir: "/etc/nixos", sudo: true },
+    "nixos": { dir: "/etc/nixos", sudo: true },
+    "fastfetch": "~/.config/fastfetch",
+}
+
+# new config command to open predermined directories instead of only working for nushell
+export def "config" [
+    app: string, # name of the app you want to open the config for
+]: nothing -> nothing {
+    let editor = $env.config.buffer_editor;
+
+    mut dir = $config_dirs | get $app;
+
+    mut flags = "";
+    mut sudo = ""
+
+    if (($dir | describe) != "string") {
+        let obj = $dir;
+        $dir = $obj | get dir;
+        if ($obj | get sudo) {
+            $flags = $vscodium_root_flags;
+            $sudo = "sudo "
+        }
+    }
+
+    nu -c $"($sudo)($editor) ($dir) ($flags)"
+}
+
+# open the nu config dir instead of just config.nu
+# has to be done like this because config nu clashes with the builtin
+export def "config nu" []: nothing -> nothing {
+    let editor = $env.config.buffer_editor;
+
+    nu -c $"($editor) (dirname $nu.config-path)"
 }
