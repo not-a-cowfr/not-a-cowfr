@@ -14,7 +14,7 @@ in
     baloo-widgets
     elisa
     ffmpegthumbs
-    kate
+    # kate
     khelpcenter
     konsole
     krdp

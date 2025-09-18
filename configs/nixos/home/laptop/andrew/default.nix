@@ -5,6 +5,8 @@
     "${nhModules}/desktop/kde"
   ];
 
+  news.display = "silent";
+
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
@@ -12,6 +14,9 @@
     # alacritty
     github-desktop
     vscodium
+    gparted
+    unetbootin
+    ghostty
 
     # regular apps
     legcord
@@ -20,7 +25,6 @@
     razergenie
     steam-run
     spotify
-    # zen-browser
     inputs.zen-browser.packages."${pkgs.system}".twilight
     zoom-us
 
