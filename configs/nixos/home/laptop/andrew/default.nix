@@ -13,9 +13,10 @@
 
   programs.home-manager.enable = true;
 
+  services.kdeconnect.enable = true;
+
   home.packages = with pkgs; [
     # dev apps
-    # alacritty
     github-desktop
     vscodium
     gparted
@@ -38,13 +39,11 @@
     zig
 
     # cli tools
-    # bat
     cargo-flamegraph
     dioxus-cli
     docker
     docker-compose
     fnm
-    # git
     mongodb
     mongosh
     nginx
@@ -56,7 +55,6 @@
     vim
 
     # deps
-    # starship
     steamcmd
   ];
 

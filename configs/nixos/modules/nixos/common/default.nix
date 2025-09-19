@@ -84,8 +84,13 @@
 
   networking = {
     networkmanager.enable = true;
-    firewall.allowedTCPPorts = [ 80 443 25565 ];
+    firewall = {
+      allowedTCPPorts = [ 80 443 25565 ];
+      allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+      allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
+    };
   };
+
 
   systemd.services = {
     NetworkManager-wait-online.enable = false;
