@@ -148,7 +148,7 @@
               launchers = [
                 "applications:systemsettings.desktop"
                 "applications:org.kde.dolphin.desktop"
-                "applications:Alacritty.desktop"
+                "applications:com.mitchellh.ghostty.desktop"
                 "applications:github-desktop.desktop"
                 "applications:codium.desktop"
                 "applications:legcord.desktop"
