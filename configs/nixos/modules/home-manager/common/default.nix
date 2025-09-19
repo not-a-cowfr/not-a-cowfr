@@ -5,17 +5,11 @@
 }:
 {
   imports = [
-    # ../programs/alacritty
     ../programs/bat
     ../programs/fastfetch
     ../programs/fzf
-    ../programs/git
-    ../programs/go
     ../programs/gpg
-    ../programs/starship
-    # ../programs/zen
     ../services/flatpak
-    ../programs/ghostty
   ];
 
   nixpkgs = {
