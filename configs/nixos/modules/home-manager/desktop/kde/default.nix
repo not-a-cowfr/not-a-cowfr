@@ -230,7 +230,7 @@
         "Switch to Desktop 3" = "Meta+3";
         "Switch to Desktop 4" = "Meta+4";
         "Window Close" = "Ctrl+Q";
-        "Toggle Overview" = "Meta+Tab";
+        "Toggle Overview" = "Meta+Tab"; # todo: fix this creating a new shortcut instead of addinga keybind to the already existing `Toggle Overview` shortcut
       };
 
       plasmashell = {
@@ -253,10 +253,38 @@
 
     window-rules = [
       {
+        description = "Assign Ghostty to Desktop 1";
+        match = {
+          window-class = {
+            value = "ghostty";
+            type = "substring";
+          };
+          window-types = [ "normal" ];
+        };
+        apply = {
+          desktops = "Desktop_1";
+          desktopsrule = "2";
+        };
+      }
+      {
         description = "Assign Alacritty to Desktop 1";
         match = {
           window-class = {
             value = "Alacritty";
+            type = "substring";
+          };
+          window-types = [ "normal" ];
+        };
+        apply = {
+          desktops = "Desktop_1";
+          desktopsrule = "2";
+        };
+      }
+      {
+        description = "Assign GitHub Desktop to Desktop 1";
+        match = {
+          window-class = {
+            value = "GitHub Desktop";
             type = "substring";
           };
           window-types = [ "normal" ];
@@ -281,10 +309,38 @@
         };
       }
       {
+        description = "Assign zen to Desktop 3";
+        match = {
+          window-class = {
+            value = "zen";
+            type = "substring";
+          };
+          window-types = [ "normal" ];
+        };
+        apply = {
+          desktops = "Desktop_3";
+          desktopsrule = "2";
+        };
+      }
+      {
         description = "Assign Zoom to Desktop 4";
         match = {
           window-class = {
             value = "zoom";
+            type = "substring";
+          };
+          window-types = [ "normal" ];
+        };
+        apply = {
+          desktops = "Desktop_4";
+          desktopsrule = "2";
+        };
+      }
+      {
+        description = "Assign Legcord to Desktop 4";
+        match = {
+          window-class = {
+            value = "legcord";
             type = "substring";
           };
           window-types = [ "normal" ];
