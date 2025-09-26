@@ -7,7 +7,7 @@
 }:
 {
   imports = [
-    inputs.plasma-manager.homeManagerModules.plasma-manager
+    inputs.plasma-manager.homeModules.plasma-manager
     "${nhModules}/misc/wallpaper"
   ];
 
@@ -220,7 +220,7 @@
 
     session = {
       general.askForConfirmationOnLogout = false;
-      sessionRestore.restoreOpenApplicationsOnLogin = "startWithEmptySession";
+      sessionRestore.restoreOpenApplicationsOnLogin = "onLastLogout";
     };
 
     shortcuts = {
