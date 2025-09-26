@@ -21,7 +21,6 @@
     vscodium
     gparted
     unetbootin
-    ghostty
 
     # regular apps
     legcord
