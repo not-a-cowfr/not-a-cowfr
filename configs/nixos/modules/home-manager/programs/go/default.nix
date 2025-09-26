@@ -2,8 +2,11 @@
 {
   programs.go = {
     enable = true;
-    goBin = "go/bin";
-    goPath = "go";
+
+    env = {
+      GOBIN = "go/bin";
+      GOPATH = "go";
+    };
   };
 
   home.sessionPath = [
