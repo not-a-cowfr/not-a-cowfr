@@ -19,7 +19,6 @@
   home.packages = with pkgs; [
     # dev apps
     github-desktop
-    vscodium
     gparted
     unetbootin
 
