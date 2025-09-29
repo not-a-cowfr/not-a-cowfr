@@ -8,7 +8,7 @@
 {
   imports = [
     inputs.plasma-manager.homeModules.plasma-manager
-    "${nhModules}/misc/wallpaper"
+    ../wallpaper
   ];
 
   home.packages = with pkgs; [
@@ -361,7 +361,7 @@
       theme = "Nordic";
       colorScheme = "BreezeDark";
       iconTheme = "Breeze Dark";
-      wallpaper = "/etc/nixos/modules/home-manager/misc/wallpaper/wallpaper.jpg";
+      wallpaper = "/etc/nixos/modules/home-manager/desktop/wallpaper/wallpaper.jpg";
       splashScreen.theme = "Illusion";
     };
 
