@@ -7,14 +7,17 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1759131940,
-        "narHash": "sha256-Se4W/9xeY+cxbNNbt0axoIYMWZF1P4wP/eOYisFDZ6g=",
-        "path": "/home/andrew/Documents/GitHub/equinix",
-        "type": "path"
+        "lastModified": 1759131969,
+        "narHash": "sha256-4es7ntmM6jmMFViDLTm2yCnkr4hP9/gAG3TAJDmHM4s=",
+        "owner": "not-a-cowfr",
+        "repo": "equinix",
+        "rev": "da4701e0d5431722cd88ce7b7c919cfadd79bd5e",
+        "type": "github"
       },
       "original": {
-        "path": "/home/andrew/Documents/GitHub/equinix",
-        "type": "path"
+        "owner": "not-a-cowfr",
+        "repo": "equinix",
+        "type": "github"
       }
     },
     "flake-compat": {
@@ -204,11 +207,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1758690382,
-        "narHash": "sha256-NY3kSorgqE5LMm1LqNwGne3ZLMF2/ILgLpFr1fS4X3o=",
+        "lastModified": 1759036355,
+        "narHash": "sha256-0m27AKv6ka+q270dw48KflE0LwQYrO7Fm4/2//KCVWg=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e643668fd71b949c53f8626614b21ff71a07379d",
+        "rev": "e9f00bd893984bc8ce46c895c3bf7cac95331127",
         "type": "github"
       },
       "original": {

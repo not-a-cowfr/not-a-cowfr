@@ -6,7 +6,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    "${nixosModules}/common"
+    ../common
     "${nixosModules}/desktop/kde"
     "${nixosModules}/programs/steam"
     "${nixosModules}/services/minecraft/fabric/1_20_1/create"
