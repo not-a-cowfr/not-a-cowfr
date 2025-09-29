@@ -137,7 +137,7 @@ def test-api [
     server?: string, # server name
     requests: number = 100000, # number of requests to perform
 ]: any -> string {
-    let rps = hey -n $requests -c 100 $"http://localhost:3000/($endpoint)"
+    let rps = hey -n $requests -c 1000 $"http://localhost:3000/($endpoint)"
     | parse --regex '.*Requests/sec:\W+(?<rps>\d+)\.\d+'
     | get rps | get 0
 
@@ -221,7 +221,7 @@ def "nix remove-generations" [] {
     
     let selected = $generations | get generation | str join "\n" | fzf --multi | lines | into int;
 
-    if ($selected) {
+    if ($selected != null) {
         sudo nix-env -p /nix/var/nix/profiles/system --delete-generations ...$selected
     }
 }

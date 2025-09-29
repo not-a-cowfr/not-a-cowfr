@@ -7,6 +7,7 @@ path add "~/.cargo/bin"
 $env.PNPM_HOME = "/home/andrew/.local/share/pnpm"
 $env.PATH = ($env.PATH | split row (char esep) | prepend $env.PNPM_HOME )
 
+# fnm
 load-env (fnm env --shell bash
     | lines
     | str replace 'export ' ''
