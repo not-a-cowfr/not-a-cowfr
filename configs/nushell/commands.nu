@@ -276,3 +276,23 @@ export def "config nu" []: nothing -> nothing {
 
     nu -c $"($editor) (dirname $nu.config-path)"
 }
+
+# lists files tracked by git along with some extra git-related data
+def "git ls" [] {
+    mut index = 1;
+    let gitlog = git log --all --format="%ai" --name-only --diff-filter=ACMRT
+    | split row "\n\n"
+    | each {|i|
+        let lines = $i | lines
+
+        let last = $lines | last | into datetime
+
+        $lines
+        | drop
+        | each {|file| {name: $file commit-ts: $last} }
+    }
+    | flatten
+    | uniq-by name
+
+    git ls-files | lines | wrap name | join $gitlog name --inner
+}
