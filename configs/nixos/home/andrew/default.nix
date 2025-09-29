@@ -34,6 +34,7 @@
 
     # languages
     bun
+    python3
     rustup
     zig
 
@@ -51,6 +52,7 @@
     nushell
     rcon-cli
     rojo
+    uv
     valkey
     vim
 
