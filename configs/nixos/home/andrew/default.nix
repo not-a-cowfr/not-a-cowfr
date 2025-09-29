@@ -8,6 +8,7 @@
     "${nhModules}/programs/starship"
     "${nhModules}/programs/terminal"
     "${nhModules}/programs/discord"
+    "${nhModules}/programs/code-editor"
   ];
 
   news.display = "silent";
