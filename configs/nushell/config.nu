@@ -99,7 +99,7 @@ $env.config = {
             wrapping_try_keep_words: true
             truncating_suffix: "..."
         }
-        missing_value_symbol: ❌
+        missing_value_symbol: "undefined"
     }
     float_precision: 2
 }
