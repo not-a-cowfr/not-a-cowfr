@@ -4,6 +4,7 @@
 , config
 , userConfig
 , pkgs
+, hostname
 , ...
 }:
 {
@@ -84,11 +85,7 @@
 
   networking = {
     networkmanager.enable = true;
-    firewall = {
-      allowedTCPPorts = [ 80 443 25565 ];
-      allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
-      allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
-    };
+    hostName = hostname;
   };
 
   systemd.services = {
@@ -194,4 +191,6 @@
   services.locate.enable = true;
 
   services.openssh.enable = true;
+
+  system.stateVersion = "25.05";
 }
