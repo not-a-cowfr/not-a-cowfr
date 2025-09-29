@@ -3,10 +3,11 @@
   imports = [
     "${nhModules}/common"
     "${nhModules}/desktop/kde"
-    ../../../modules/home-manager/programs/git
-    ../../../modules/home-manager/programs/go
-    ../../../modules/home-manager/programs/starship
-    ../../../modules/home-manager/programs/ghostty
+    ../../modules/home-manager/programs/git
+    ../../modules/home-manager/programs/go
+    ../../modules/home-manager/programs/starship
+    ../../modules/home-manager/programs/terminal
+    ../../modules/home-manager/programs/discord
   ];
 
   news.display = "silent";
@@ -47,6 +48,7 @@
     mongosh
     nginx
     nodePackages.pnpm
+    nixfmt
     nushell
     rcon-cli
     rojo
