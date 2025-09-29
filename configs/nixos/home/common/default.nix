@@ -1,15 +1,16 @@
 { outputs
 , userConfig
 , pkgs
+, nhModules
 , ...
 }:
 {
   imports = [
-    ../programs/bat
-    ../programs/fastfetch
-    ../programs/fzf
-    ../programs/gpg
-    ../services/flatpak
+    "${nhModules}/programs/bat"
+    "${nhModules}/programs/fastfetch"
+    "${nhModules}/programs/fzf"
+    "${nhModules}/programs/gpg"
+    "${nhModules}/services/flatpak"
   ];
 
   nixpkgs = {

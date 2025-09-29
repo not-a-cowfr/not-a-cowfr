@@ -1,13 +1,13 @@
 { nhModules, pkgs, inputs, ... }:
 {
   imports = [
-    "${nhModules}/common"
+    ../common
     "${nhModules}/desktop/kde"
-    ../../modules/home-manager/programs/git
-    ../../modules/home-manager/programs/go
-    ../../modules/home-manager/programs/starship
-    ../../modules/home-manager/programs/terminal
-    ../../modules/home-manager/programs/discord
+    "${nhModules}/programs/git"
+    "${nhModules}/programs/go"
+    "${nhModules}/programs/starship"
+    "${nhModules}/programs/terminal"
+    "${nhModules}/programs/discord"
   ];
 
   news.display = "silent";
@@ -57,6 +57,12 @@
 
     # deps
     steamcmd
+
+    # cybersec class stuff
+    sherlock
+    nmap
+    wireshark-qt
+    tcpdump
   ];
 
   home.stateVersion = "25.05";
