@@ -78,7 +78,7 @@
             nhModules = "${self}/modules/home-manager";
           };
           modules = [
-            ./home/${hostname}/${username}
+            ./home/${username}
           ];
         };
     in
