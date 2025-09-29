@@ -195,18 +195,23 @@ def "backup new" [
 
 # opens a select menu to reuild and switch nixos and/or home-manager
 def "nix rebuild" [] {
-    let choices = ["nixos", "home-manager"]
+    let choices = ["nixos", "home-manager", "config flake"]
     let selected = ($choices | str join "\n" | fzf --multi | lines)
 
+    let user = (whoami | str trim)
+    let host = (hostname | str trim)
+    
     if ($selected | any {|x| $x == "nixos"}) {
-        let host = (hostname | str trim)
         sudo nixos-rebuild switch --flake $"/etc/nixos#($host)"
     }
 
+    # put this before home manager command so that if both are selected the flake updates first so home manager doesnt get a bunch of errors
+    if ($selected | any {|x| $x == "config flake"}) {
+        sudo nix flake update --flake /etc/nixos
+    }
+
     if ($selected | any {|x| $x == "home-manager"}) {
-        let user = (whoami | str trim)
-        let host = (hostname | str trim)
-        home-manager switch --flake $"/etc/nixos#($user)@($host)"
+        home-manager switch --flake $"/etc/nixos#($user)@($host)" --impure
     }
 }
 
