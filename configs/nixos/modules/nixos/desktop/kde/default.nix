@@ -1,7 +1,4 @@
 { pkgs, ... }:
-let
-  wallpaper = ../../../home-manager/misc/wallpaper/wallpaper.jpg;
-in
 {
   services.displayManager.sddm = {
     enable = true;
