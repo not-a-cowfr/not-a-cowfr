@@ -28,6 +28,8 @@
     };
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+
+    equinix.url = "path:/home/andrew/Documents/GitHub/equinix";
   };
 
   outputs =
@@ -36,6 +38,7 @@
     , nixpkgs
     , zen-browser
     , nix-minecraft
+    , equinix
     , ...
     }@inputs:
     let
