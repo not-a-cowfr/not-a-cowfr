@@ -29,7 +29,8 @@
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 
-    equinix.url = "path:/home/andrew/Documents/GitHub/equinix";
+    # equinix.url = "path:/home/andrew/Documents/GitHub/equinix";
+    equinix.url = "github:not-a-cowfr/equinix";
   };
 
   outputs =
