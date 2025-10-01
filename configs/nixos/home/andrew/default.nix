@@ -22,6 +22,7 @@
     github-desktop
     gparted
     unetbootin
+    jetbrains.idea-ultimate
 
     # regular apps
     legcord
@@ -32,6 +33,7 @@
     spotify
     inputs.zen-browser.packages."${pkgs.system}".twilight
     zoom-us
+    audacity
 
     # languages
     bun
@@ -56,6 +58,7 @@
     uv
     valkey
     vim
+    dig
 
     # deps
     steamcmd
@@ -65,6 +68,9 @@
     nmap
     wireshark-qt
     tcpdump
+    stegseek
+    exiftool
+    foremost
   ];
 
   home.stateVersion = "25.11";

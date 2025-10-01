@@ -31,14 +31,14 @@
   };
 
   home.packages = with pkgs; [
-    dig
     fd
     jq
     ripgrep
     curl
-    # fastfetch
     nixpkgs-fmt
     tree
+    zip
+    unzip
 
     openrazer-daemon
     openssl
