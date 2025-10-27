@@ -205,6 +205,20 @@ in
                 "org.kde.plasma.bluetooth"
                 "org.kde.plasma.networkmanagement"
               ];
+
+              hidden = [
+                "polychromatic-tray-applet"
+                "org.kde.kscreen"
+                "org.kde.kdeconnect"
+                "org.kde.plasma.clipboard"
+                "org.kde.plasma.cameraindicator"
+                "org.kde.plasma.devicenotifier"
+                "org.kde.plasma.keyboardlayout"
+                "org.kde.plasma.keyboardindicator"
+                "org.kde.plasma.manage-inputmethod"
+                "org.kde.plasma.weather"
+                "org.kde.plasma.brightness"
+              ];
             };
           }
           {
