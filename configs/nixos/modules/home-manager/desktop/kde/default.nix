@@ -216,9 +216,12 @@ in
 
                 titlePosition = 2;
                 skipBackwardControlInPanel = false;
+                skipForwardControlInPanel = false;
+                playPauseControlInPanel = false;
 
                 panelIconSizeRatio = 1;
                 useAlbumCoverAsPanelIcon = true;
+                maxSongWidthInPanel = 300;
 
                 desktopWidgetBg = 0;
                 fullAlbumCoverAsBackground = true;
@@ -237,6 +240,7 @@ in
 
               hidden = [
                 "polychromatic-tray-applet"
+                "spotify-client"
                 "org.kde.kscreen"
                 "org.kde.kdeconnect"
                 "org.kde.plasma.clipboard"
@@ -245,6 +249,7 @@ in
                 "org.kde.plasma.keyboardlayout"
                 "org.kde.plasma.keyboardindicator"
                 "org.kde.plasma.manage-inputmethod"
+                "org.kde.plasma.mediacontroller"
                 "org.kde.plasma.weather"
                 "org.kde.plasma.brightness"
               ];
