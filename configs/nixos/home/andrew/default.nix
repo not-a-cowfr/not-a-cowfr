@@ -41,6 +41,7 @@
     python3
     rustup
     zig
+    nushell
     nasm
 
     # cli tools
@@ -54,13 +55,14 @@
     nginx
     nodePackages.pnpm
     nixfmt
-    nushell
+    nushellPlugins.highlight
     rcon-cli
     rojo
     uv
     valkey
     vim
     dig
+    direnv
 
     # deps
     steamcmd
