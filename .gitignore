@@ -4,3 +4,4 @@
 **/oldenv-*.nu
 /configs/nushell/vendor
 ~/
+configs/nixos/hosts/laptop/hardware-configuration.nix
