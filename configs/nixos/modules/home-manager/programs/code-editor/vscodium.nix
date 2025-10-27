@@ -84,8 +84,11 @@
 
         "zig.zls.enabled" = "on";
 
-        "[jsonc]" = {
+        "[json,jsonc]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
+        "[rs]" = {
+          "editor.defaultFormatter" = "rust-lang.rust-analyzer";
         };
       };
     };
