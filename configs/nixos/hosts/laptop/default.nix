@@ -1,7 +1,8 @@
-{ inputs
-, pkgs
-, nixosModules
-, ...
+{
+  inputs,
+  pkgs,
+  nixosModules,
+  ...
 }:
 {
   imports = [
@@ -16,8 +17,22 @@
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
 
   networking.firewall = {
-    allowedTCPPorts = [ 80 443 25565 ];
-    allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
-    allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
+    allowedTCPPorts = [
+      80
+      443
+      25565
+    ];
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
+    allowedUDPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
   };
 }

@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-	imports = [
-		./equicord.nix
-	];
+  imports = [
+    ./equicord.nix
+  ];
 }

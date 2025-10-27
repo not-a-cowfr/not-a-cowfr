@@ -1,8 +1,9 @@
-{ outputs
-, userConfig
-, pkgs
-, nhModules
-, ...
+{
+  outputs,
+  userConfig,
+  pkgs,
+  nhModules,
+  ...
 }:
 {
   imports = [

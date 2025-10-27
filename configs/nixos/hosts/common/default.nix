@@ -1,11 +1,12 @@
-{ inputs
-, outputs
-, lib
-, config
-, userConfig
-, pkgs
-, hostname
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  userConfig,
+  pkgs,
+  hostname,
+  ...
 }:
 {
   nixpkgs = {
@@ -24,7 +25,10 @@
   );
 
   nix = {
-    settings.trusted-users = [ "root" "@wheel" ];
+    settings.trusted-users = [
+      "root"
+      "@wheel"
+    ];
 
     nixPath = [ "/etc/nix/path" ];
 
@@ -45,12 +49,10 @@
     };
   };
 
-  environment.etc = lib.mapAttrs'
-    (name: value: {
-      name = "nix/path/${name}";
-      value.source = value.flake;
-    })
-    config.nix.registry;
+  environment.etc = lib.mapAttrs' (name: value: {
+    name = "nix/path/${name}";
+    value.source = value.flake;
+  }) config.nix.registry;
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = 1;

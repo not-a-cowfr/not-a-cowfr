@@ -17,6 +17,7 @@
     krdp
     plasma-browser-integration
     xwaylandvideobridge
+    kwrite
   ];
 
   systemd.user.services = {

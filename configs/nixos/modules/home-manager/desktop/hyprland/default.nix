@@ -1,4 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
   imports = [
     inputs.hyprland.homeManagerModules.default
@@ -97,10 +103,20 @@
   xdg.configFile."waybar/config".text = builtins.toJSON {
     layer = "top";
     position = "bottom";
-    modules-left = [ "workspaces" "window" ];
+    modules-left = [
+      "workspaces"
+      "window"
+    ];
     modules-center = [ "clock" ];
-    modules-right = [ "tray" "battery" "network" "pulseaudio" ];
-    clock = { format = "{:%Y-%m-%d %H:%M}"; };
+    modules-right = [
+      "tray"
+      "battery"
+      "network"
+      "pulseaudio"
+    ];
+    clock = {
+      format = "{:%Y-%m-%d %H:%M}";
+    };
   };
   xdg.configFile."waybar/style.css".text = ''
     * {

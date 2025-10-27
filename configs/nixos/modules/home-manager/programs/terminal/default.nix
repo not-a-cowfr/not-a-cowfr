@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-	imports = [
-		./ghostty.nix
-	];
+  imports = [
+    ./ghostty.nix
+  ];
 }

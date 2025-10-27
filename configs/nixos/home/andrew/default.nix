@@ -1,4 +1,9 @@
-{ nhModules, pkgs, inputs, ... }:
+{
+  nhModules,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
     ../common

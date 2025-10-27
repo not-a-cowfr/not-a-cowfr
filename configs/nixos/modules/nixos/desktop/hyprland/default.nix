@@ -12,7 +12,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    grimblast wl-clipboard
+    grimblast
+    wl-clipboard
 
     wofi
     waybar

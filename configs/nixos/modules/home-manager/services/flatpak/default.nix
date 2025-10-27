@@ -1,8 +1,8 @@
-{ config
-, inputs
-, lib
-, pkgs
-, ...
+{
+  config,
+  inputs,
+  pkgs,
+  ...
 }:
 {
   imports = [ inputs.nix-flatpak.homeManagerModules.nix-flatpak ];

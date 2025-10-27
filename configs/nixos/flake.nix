@@ -49,12 +49,13 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
-    , home-manager
-    , nix-minecraft
-    , chaotic
-    , ...
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      nix-minecraft,
+      chaotic,
+      ...
     }@inputs:
     let
       inherit (self) outputs;
