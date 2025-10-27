@@ -15,6 +15,7 @@
 
     config = {
       allowUnfree = true;
+      allowBroken = true;
     };
   };
 
@@ -153,6 +154,7 @@
       "wheel"
       "docker"
       "openrazer"
+      "libvirtd"
     ];
     isNormalUser = true;
   };
@@ -180,11 +182,34 @@
     gnumake
     killall
     mesa
+    qemu
   ];
 
-  virtualisation.docker.enable = true;
-  virtualisation.docker.rootless.enable = true;
-  virtualisation.docker.rootless.setSocketVariable = true;
+  systemd.tmpfiles.rules = [
+    "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware"
+    # "f /dev/shm/looking-glass 0660 ${user} qemu-libvirtd -"
+  ];
+
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+        # ovmf = {
+        #   enable = true;
+        #   packages = [ pkgs.OVMFFull.fd ];
+        # };
+      };
+    };
+
+    spiceUSBRedirection.enable = true;
+
+    docker = {
+      enable = true;
+      rootless.enable = true;
+      rootless.setSocketVariable = true;
+    };
+  };
 
   programs.xwayland.enable = true;
 

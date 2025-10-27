@@ -34,12 +34,14 @@
     inputs.zen-browser.packages."${pkgs.system}".twilight
     zoom-us
     audacity
+    qemu
 
     # languages
     bun
     python3
     rustup
     zig
+    nasm
 
     # cli tools
     cargo-flamegraph
