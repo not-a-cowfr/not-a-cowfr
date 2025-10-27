@@ -23,20 +23,11 @@
     lib.filterAttrs (_: lib.isType "flake") inputs
   );
 
-  nix.nixPath = [ "/etc/nix/path" ];
-  environment.etc = lib.mapAttrs'
-    (name: value: {
-      name = "nix/path/${name}";
-      value.source = value.flake;
-    })
-    config.nix.registry;
-
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = 1;
-    NIX_BUILD_SHELL = "nu";
-  };
-
   nix = {
+    settings.trusted-users = [ "root" "@wheel" ];
+
+    nixPath = [ "/etc/nix/path" ];
+
     settings = {
       experimental-features = "nix-command flakes";
       auto-optimise-store = true;
@@ -52,6 +43,18 @@
       automatic = true;
       dates = [ "weekly" ];
     };
+  };
+
+  environment.etc = lib.mapAttrs'
+    (name: value: {
+      name = "nix/path/${name}";
+      value.source = value.flake;
+    })
+    config.nix.registry;
+
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = 1;
+    # NIX_BUILD_SHELL = "nu";
   };
 
   boot = {
@@ -182,7 +185,6 @@
     gnumake
     killall
     mesa
-    qemu
   ];
 
   systemd.tmpfiles.rules = [
