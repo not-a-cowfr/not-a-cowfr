@@ -59,6 +59,11 @@
         key = "Ctrl+Shift+Esc";
         command = "plasma-systemmonitor";
       };
+      launch-settings = {
+        name = "Launch System Settings";
+        key = "Meta+I";
+        command = "systemsettings";
+      };
       screenshot-region = {
         name = "Capture a rectangular region of the screen";
         key = "Meta+Shift+S";
