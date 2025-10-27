@@ -6,7 +6,7 @@
   pkgs,
   ...
 }:
-let 
+let
   otto = pkgs.stdenvNoCC.mkDerivation (finalAttrs: {
     name = "otto";
     src = pkgs.fetchFromGitLab {
@@ -21,7 +21,7 @@ let
       cp -r ./* $out/share/plasma/plasmoids/otto/
       runHook postInstall
     '';
-    passthru.updateScript = pkgs.nix-update-script {};
+    passthru.updateScript = pkgs.nix-update-script { };
   });
 in
 {
@@ -36,6 +36,7 @@ in
     kdotool
     tela-circle-icon-theme
     otto
+    plasmusic-toolbar
   ];
 
   services.gpg-agent = {
@@ -185,18 +186,46 @@ in
               launchers = [
                 "applications:systemsettings.desktop"
                 "applications:org.kde.dolphin.desktop"
+
+                "org.kde.plasma.marginsseparator"
+
                 "applications:com.mitchellh.ghostty.desktop"
                 "applications:github-desktop.desktop"
                 "applications:codium.desktop"
+
+                "org.kde.plasma.marginsseparator"
+
                 "applications:legcord.desktop"
                 "applications:spotify.desktop"
+                "preferred://browser"
+
+                "org.kde.plasma.marginsseparator"
+
                 "applications:org.prismlauncher.PrismLauncher.desktop"
                 "applications:steam.desktop"
-                "preferred://browser"
               ];
             };
           }
           "org.kde.plasma.panelspacer"
+          {
+            name = "plasmusic-toolbar";
+            config = {
+              general = {
+                useCustomFont = true;
+                customFont = "ComicShannsMono Nerd Font,10,-1,5,700,0,0,0,0,0,0,0,0,0,0,1";
+
+                titlePosition = 2;
+                skipBackwardControlInPanel = false;
+
+                panelIconSizeRatio = 1;
+                useAlbumCoverAsPanelIcon = true;
+
+                desktopWidgetBg = 0;
+                fullAlbumCoverAsBackground = true;
+              };
+            };
+          }
+          "org.kde.plasma.marginsseparator"
           {
             systemTray.items = {
               shown = [
