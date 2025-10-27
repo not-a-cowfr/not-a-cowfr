@@ -1,10 +1,30 @@
-{ config
-, inputs
-, lib
-, nhModules
-, pkgs
-, ...
+{
+  config,
+  inputs,
+  lib,
+  nhModules,
+  pkgs,
+  ...
 }:
+let 
+  # kara is in nixpkgs and builtin to plasma-manager but leaving this here for future reference
+  # kara = pkgs.stdenvNoCC.mkDerivation (finalAttrs: {
+  #   name = "kara";
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "dhruv8sh";
+  #     repo = "kara";
+  #     rev = "7d2d30539a3d534af0a21ab4b485193eb792d3d5";
+  #     sha256 = "sha256-gjoeKjcAr67A3moKeO7XxOiZLlXPsyW5/lCGsn8QQj4=";
+  #   };
+  #   installPhase = ''
+  #     runHook preInstall
+  #     mkdir -p $out/share/plasma/plasmoids/kara
+  #     cp -r ./* $out/share/plasma/plasmoids/kara/
+  #     runHook postInstall
+  #   '';
+  #   passthru.updateScript = pkgs.nix-update-script {};
+  # });
+in
 {
   imports = [
     inputs.plasma-manager.homeModules.plasma-manager
@@ -148,6 +168,18 @@
         location = "bottom";
         widgets = [
           "org.kde.plasma.kickoff"
+          "org.kde.plasma.marginsseparator"
+          {
+            name = "org.dhruv8sh.kara";
+            config = {
+              general = {
+                animationDuration = 50;
+                # highlightType = 1;
+                type = 3;
+              };
+            };
+          }
+          "org.kde.plasma.panelspacer"
           {
             iconTasks = {
               launchers = [
@@ -160,18 +192,20 @@
                 "applications:spotify.desktop"
                 "applications:org.prismlauncher.PrismLauncher.desktop"
                 "applications:steam.desktop"
-                "applications:zen-twilight.desktop"
+                "preferred://browser"
               ];
             };
           }
-          "org.kde.plasma.marginsseparator"
+          "org.kde.plasma.panelspacer"
           {
-            systemTray.items.shown = [
-              "org.kde.plasma.volume"
-              "org.kde.plasma.battery"
-              "org.kde.plasma.bluetooth"
-              "org.kde.plasma.networkmanagement"
-            ];
+            systemTray.items = {
+              shown = [
+                "org.kde.plasma.volume"
+                "org.kde.plasma.battery"
+                "org.kde.plasma.bluetooth"
+                "org.kde.plasma.networkmanagement"
+              ];
+            };
           }
           {
             digitalClock = {
