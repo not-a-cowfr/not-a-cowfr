@@ -13,6 +13,8 @@
     "${nhModules}/services/flatpak"
   ];
 
+  nix.package = pkgs.nix;
+
   nixpkgs = {
     overlays = [
       outputs.overlays.stable-packages

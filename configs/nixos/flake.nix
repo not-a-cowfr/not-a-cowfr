@@ -1,24 +1,30 @@
 {
   description = "my nix config";
   inputs = {
+    # packages stuff
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    # nixos-hardware.url = "github:nixos/nixos-hardware";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nixos-hardware.url = "github:nixos/nixos-hardware";
-
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=v0.6.0";
 
+    # desktop environment/window manager configs
     plasma-manager = {
       url = "github:AlexNabokikh/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
 
+
+    # addons
+    chaotic.url = "github:chaotic-cx/nyx";
+
+    # apps
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake/beta";
       inputs = {
@@ -39,7 +45,7 @@
     , nixpkgs
     , zen-browser
     , nix-minecraft
-    , equinix
+    , chaotic
     , ...
     }@inputs:
     let
@@ -66,6 +72,9 @@
           modules = [
             ./hosts/${hostname}
             inputs.nix-minecraft.nixosModules.minecraft-servers
+            chaotic.nixosModules.nyx-cache
+            chaotic.nixosModules.nyx-overlay
+            chaotic.nixosModules.nyx-registry
           ];
         };
 
@@ -80,6 +89,7 @@
           };
           modules = [
             ./home/${username}
+            inputs.chaotic.homeManagerModules.default
           ];
         };
     in
