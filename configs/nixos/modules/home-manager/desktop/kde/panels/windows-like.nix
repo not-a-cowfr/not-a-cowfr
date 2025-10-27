@@ -2,7 +2,11 @@
 {
   location = "bottom";
   widgets = [
-    "org.kde.plasma.kickoff"
+    {
+      kicker = {
+        icon = "/etc/nixos/assets/nixos-pan.png";
+      };
+    }
     "org.kde.plasma.marginsseparator"
     {
       name = "org.dhruv8sh.kara";
