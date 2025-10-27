@@ -8,9 +8,19 @@
       name = "org.dhruv8sh.kara";
       config = {
         general = {
-          animationDuration = 75;
-          # highlightType = 1;
-          type = 3;
+          type = 0;
+
+          animationDuration = 90;
+          spacing = 3;
+          wrapOn = false;
+        };
+
+        type1 = {
+          t1activeWidth = 40;
+          t1activeHeight = 22;
+
+          t1height = 24;
+          t1width = 8;
         };
       };
     }
