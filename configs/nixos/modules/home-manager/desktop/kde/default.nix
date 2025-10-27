@@ -7,23 +7,22 @@
   ...
 }:
 let 
-  # kara is in nixpkgs and builtin to plasma-manager but leaving this here for future reference
-  # kara = pkgs.stdenvNoCC.mkDerivation (finalAttrs: {
-  #   name = "kara";
-  #   src = pkgs.fetchFromGitHub {
-  #     owner = "dhruv8sh";
-  #     repo = "kara";
-  #     rev = "7d2d30539a3d534af0a21ab4b485193eb792d3d5";
-  #     sha256 = "sha256-gjoeKjcAr67A3moKeO7XxOiZLlXPsyW5/lCGsn8QQj4=";
-  #   };
-  #   installPhase = ''
-  #     runHook preInstall
-  #     mkdir -p $out/share/plasma/plasmoids/kara
-  #     cp -r ./* $out/share/plasma/plasmoids/kara/
-  #     runHook postInstall
-  #   '';
-  #   passthru.updateScript = pkgs.nix-update-script {};
-  # });
+  otto = pkgs.stdenvNoCC.mkDerivation (finalAttrs: {
+    name = "otto";
+    src = pkgs.fetchFromGitLab {
+      owner = "jomada";
+      repo = "otto";
+      rev = "55a8dc6e2de4b7b2c8c171b4a36e87b71104da21";
+      sha256 = "sha256-58Aqiu/umLmedGldZJMWEkk/5bs05Pl4+rrKfAs4lyA=";
+    };
+    installPhase = ''
+      runHook preInstall
+      mkdir -p $out/share/plasma/plasmoids/otto
+      cp -r ./* $out/share/plasma/plasmoids/otto/
+      runHook postInstall
+    '';
+    passthru.updateScript = pkgs.nix-update-script {};
+  });
 in
 {
   imports = [
@@ -36,6 +35,7 @@ in
     kdePackages.krohnkite
     kdotool
     tela-circle-icon-theme
+    otto
   ];
 
   services.gpg-agent = {
@@ -395,7 +395,7 @@ in
       windowDecorations.library = "org.kde.breeze";
       windowDecorations.theme = "Breeze";
       cursor.theme = "breeze_cursors";
-      theme = "Nordic";
+      theme = "Otto";
       colorScheme = "BreezeDark";
       iconTheme = "Breeze Dark";
       wallpaper = "/etc/nixos/modules/home-manager/desktop/wallpaper/wallpaper.jpg";
