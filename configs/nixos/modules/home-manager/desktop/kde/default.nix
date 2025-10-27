@@ -173,7 +173,7 @@ in
             name = "org.dhruv8sh.kara";
             config = {
               general = {
-                animationDuration = 50;
+                animationDuration = 75;
                 # highlightType = 1;
                 type = 3;
               };
