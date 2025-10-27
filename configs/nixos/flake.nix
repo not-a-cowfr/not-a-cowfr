@@ -11,7 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak?ref=v0.6.0";
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     # desktop environment/window manager configs
     plasma-manager = {
@@ -37,10 +37,8 @@
     # apps
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake/beta";
-      inputs = {
-        home-manager.follows = "home-manager";
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
 
     # equinix.url = "path:/home/andrew/Documents/GitHub/equinix";
