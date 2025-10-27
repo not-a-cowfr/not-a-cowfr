@@ -20,6 +20,16 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    cosmic-manager = {
+      url = "github:HeitorAugustoLN/cosmic-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # addons
     chaotic.url = "github:chaotic-cx/nyx";
@@ -33,17 +43,17 @@
       };
     };
 
-    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
-
     # equinix.url = "path:/home/andrew/Documents/GitHub/equinix";
     equinix.url = "github:not-a-cowfr/equinix";
+
+    # services
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
   outputs =
     { self
-    , home-manager
     , nixpkgs
-    , zen-browser
+    , home-manager
     , nix-minecraft
     , chaotic
     , ...
