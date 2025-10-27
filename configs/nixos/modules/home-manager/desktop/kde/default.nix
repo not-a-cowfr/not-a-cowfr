@@ -241,8 +241,6 @@
       plasmashell = {
         "show-on-mouse-pos" = "";
       };
-
-      "services/org.kde.dolphin.desktop"."_launch" = "Meta+Shift+F";
     };
 
     spectacle = {
@@ -415,6 +413,7 @@
         ImageSave.imageCompressionQuality = 100;
       };
     };
+
     dataFile = {
       "dolphin/view_properties/global/.directory"."Dolphin"."ViewMode" = 1;
       "dolphin/view_properties/global/.directory"."Settings"."HiddenFilesShown" = true;
