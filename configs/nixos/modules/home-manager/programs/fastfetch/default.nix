@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       logo = {
-        source = "/etc/nixos/modules/home-manager/programs/fastfetch/nixos.png";
+        source = "/etc/nixos/assets/nixos.png";
       };
 
       display = {
