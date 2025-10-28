@@ -14,7 +14,7 @@
 
   nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
 
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos-rc;
 
   networking.firewall = {
     allowedTCPPorts = [
