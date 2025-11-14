@@ -3,8 +3,10 @@
   programs.fastfetch = {
     enable = true;
     settings = {
-      logo = {
-        source = "/etc/nixos/assets/nixos.png";
+      logo = rec {
+        source = "/etc/nixos/assets/nixos-mlm.png";
+        height = 22;
+        width = builtins.floor (height / 0.44);
       };
 
       display = {
@@ -12,7 +14,6 @@
       };
 
       modules = [
-        "break"
         "break"
         {
           type = "os";
@@ -111,7 +112,6 @@
           key = "└ weight  ";
           keyColor = "yellow";
         }
-        "break"
       ];
     };
   };

@@ -3,8 +3,9 @@
   location = "bottom";
   widgets = [
     {
-      kicker = {
-        icon = "/etc/nixos/assets/nixos-pan.png";
+      name = "org.kde.plasma.kicker";
+      config.general = {
+        icon = "/etc/nixos/assets/nixos.png";
       };
     }
     "org.kde.plasma.marginsseparator"
@@ -25,6 +26,7 @@
 
           t1height = 24;
           t1width = 8;
+          t1radius = 2;
         };
       };
     }
@@ -62,7 +64,8 @@
           useCustomFont = true;
           customFont = "ComicShannsMono Nerd Font,10,-1,5,700,0,0,0,0,0,0,0,0,0,0,1";
 
-          titlePosition = 2;
+          titlePosition = 1;
+          artistsPosition = 2;
           skipBackwardControlInPanel = false;
           skipForwardControlInPanel = false;
           playPauseControlInPanel = false;
