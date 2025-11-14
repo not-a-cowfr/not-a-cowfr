@@ -16,7 +16,6 @@
     konsole
     krdp
     plasma-browser-integration
-    xwaylandvideobridge
   ];
 
   systemd.user.services = {
