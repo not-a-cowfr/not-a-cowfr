@@ -2,7 +2,7 @@
 {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    package = pkgs.vscodium-fhs;
 
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
@@ -75,7 +75,19 @@
         "vscord.status.idle.check" = false;
         "vscord.status.idle.enabled" = false;
         "vscord.status.state.idle.enabled" = false;
+        "vscord.status.problems.enabled" = false;
         "vscord.status.state.text.editing" = "slopifying {line_count} lines of {file_name}{file_extension}";
+        # need to do this because for some reason discord hates when i put an actual url and it crashes people
+        "vscord.status.image.large.debugging.key" = "bad url so discord defaults to vscodium icon";
+        "vscord.status.image.large.editing.key" = "bad url so discord defaults to vscodium icon";
+        "vscord.status.image.large.idle.key" = "bad url so discord defaults to vscodium icon";
+        "vscord.status.image.large.notInFile.key" = "bad url so discord defaults to vscodium icon";
+        "vscord.status.image.large.viewing.key" = "bad url so discord defaults to vscodium icon";
+        "vscord.status.image.small.debugging.key" = "bad url so discord defaults to vscodium icon";
+        "vscord.status.image.small.editing.key" = "bad url so discord defaults to vscodium icon";
+        "vscord.status.image.small.idle.key" = "bad url so discord defaults to vscodium icon";
+        "vscord.status.image.small.notInFile.key" = "bad url so discord defaults to vscodium icon";
+        "vscord.status.image.small.viewing.key" = "bad url so discord defaults to vscodium icon";
 
         "git.autofetch" = true;
         "git.confirmSync" = false;
