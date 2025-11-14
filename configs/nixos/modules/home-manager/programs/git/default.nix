@@ -14,7 +14,9 @@
         email = "104355555+not-a-cowfr@users.noreply.github.com";
       };
 
-      pull.rebase = "true";
+      pull.rebase = true;
+      push.autoSetupRemote = true;
+
       init.defaultBranch = "main";
       credential.helper = "store";
     };
