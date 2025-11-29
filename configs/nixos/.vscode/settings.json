@@ -1,9 +1,0 @@
-{
-	"files.exclude": {
-		"**/.vscode": true,
-		"**/result": true,
-	},
-	"[css]": {
-		"editor.formatOnSave": false
-	}
-}

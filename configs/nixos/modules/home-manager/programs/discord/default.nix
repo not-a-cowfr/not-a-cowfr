@@ -1,6 +1,0 @@
-{ inputs, ... }:
-{
-  imports = [
-    ./equicord.nix
-  ];
-}

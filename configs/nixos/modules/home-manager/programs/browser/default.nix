@@ -1,6 +1,0 @@
-{ inputs, ... }:
-{
-  imports = [
-    ./zen.nix
-  ];
-}
