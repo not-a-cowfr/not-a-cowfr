@@ -30,11 +30,10 @@ def "cargo install" [...rest] {
 }
 
 # misc
-alias fuck = sudo !!
 alias "zig clean" = rm -rf .zig-cache zig-out
 alias "pnpm clean" = rm -rf node_modules pnpm-lock.yaml
+alias "bun clean" = rm -rf node_modules bun.lock
 
-# cd into a dir in `~/documents/github` cus i do it often and im lazy
 export def --env project [dir: string = ""]: nothing -> nothing {
     const project_dir = "~/projects";
 
@@ -54,4 +53,4 @@ export def --env project [dir: string = ""]: nothing -> nothing {
 
 # nix stuff
 alias "nix develop" = nix develop -c $env.STARSHIP_SHELL # starts nix develop in nu
-# alias nix-shell = nix-shell -c $env.STARSHIP_SHELL # starts nix-shell in nu
+alias nix-shell = nix-shell --run $env.STARSHIP_SHELL # starts nix-shell in nu
