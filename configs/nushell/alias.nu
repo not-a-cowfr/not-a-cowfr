@@ -21,7 +21,13 @@ alias npx = pnpm dlx
 alias npm = pnpm
 alias cat = bat
 alias code = codium
-alias "cargo install" = cargo binstall -y
+def "cargo install" [...rest] {
+    if (which cargo-binstall | is-not-empty) {
+        cargo binstall -y ...$rest
+    } else {
+        ^cargo install ...$rest
+    }
+}
 
 # misc
 alias fuck = sudo !!
