@@ -1,11 +1,6 @@
 use std/util "path add"
 
-# cargo
-path add "~/.cargo/bin"
-
-# pnpm
-$env.PNPM_HOME = "/home/andrew/.local/share/pnpm"
-$env.PATH = ($env.PATH | split row (char esep) | prepend $env.PNPM_HOME )
+$env.PNPM_HOME = "/home/andrew/.local/share/pnpm";
 
 # fnm
 load-env (fnm env --shell bash
@@ -15,11 +10,11 @@ load-env (fnm env --shell bash
     | split column "="
     | rename name value
     | where name != "FNM_ARCH" and name != "PATH"
-    | reduce -f {} {|it, acc| $acc | upsert $it.name $it.value }
-)
+    | reduce -f {} {|it, acc| $acc | upsert $it.name $it.value });
 
-$env.PATH = ($env.PATH
-    | split row (char esep)
-    | prepend $"($env.FNM_MULTISHELL_PATH)/bin")
-
-$env.PATH ++= ["~/.steam/steam/steamapps/common/Proton - Experimental/"]
+path add [
+    "~/.cargo/bin",
+    $"($env.FNM_MULTISHELL_PATH)/bin",
+    "~/.steam/steam/steamapps/common/Proton - Experimental/",
+    $env.PNPM_HOME
+];
