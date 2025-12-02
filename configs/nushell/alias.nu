@@ -35,8 +35,21 @@ alias "zig clean" = rm -rf .zig-cache zig-out
 alias "pnpm clean" = rm -rf node_modules pnpm-lock.yaml
 
 # cd into a dir in `~/documents/github` cus i do it often and im lazy
-export def --env gh [dir: string = ""]: nothing -> nothing {
-    cd $"~/Documents/GitHub/($dir)"
+export def --env project [dir: string = ""]: nothing -> nothing {
+    const project_dir = "~/projects";
+
+    try {
+        cd $"($project_dir)/($dir)"
+    } catch {|e|
+        let url = $"https://github.com/not-a-cowfr/($dir)"
+        let clone = input $"(ansi red)Project ($dir) not found, would you like to try cloning (ansi blue)($url) (ansi reset)[y/N]: "
+
+        if (($clone | str downcase) == "y") {
+            cd $project_dir;
+            git clone $url;
+            cd $dir;
+        }
+    }
 }
 
 # nix stuff
