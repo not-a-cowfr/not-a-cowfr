@@ -99,16 +99,6 @@ export def "cargo targets" []: nothing -> table {
   | upsert path {|i| $i.path | path relative-to $meta.workspace_root }
 }
 
-# append a variable to an env var
-export def --env "env add" [
-    var: string, # the variable to add to
-    value: string, # new variable to add
-]: any -> nothing {
-    let current = $env | get $var
-    let new = $current | append $value
-    load-env { $var: $new }
-}
-
 export def "rm program" [
     program: string, # program to remove
     --no-confirm (-y), # skip confirmations
