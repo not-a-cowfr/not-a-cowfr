@@ -5,9 +5,9 @@ alias gaa = git add --all
 
 # alias for `git commit -m "<message>"`
 export def gcm [
-    message: string, # git commit message
-]: string -> nothing {
-    git commit -m $"($message)"
+    ...message: string, # git commit message
+] {
+    git commit -m ($message | str join " ")
 }
 
 # typo fixes
