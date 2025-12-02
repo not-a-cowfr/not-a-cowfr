@@ -13,6 +13,7 @@ export def gcm [
 # typo fixes
 alias cd.. = cd ..
 alias "cd ." = cd ..
+alias "code ," = code .
 
 # use better stuff
 alias neofetch = fastfetch
