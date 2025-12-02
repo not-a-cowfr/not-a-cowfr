@@ -195,21 +195,20 @@ def "nix rebuild" [] {
         sudo nixos-rebuild switch --flake $"/etc/nixos#($host)"
     }
 
-    # put this before home manager command so that if both are selected the flake updates first so home manager doesnt get a bunch of errors
     if ($selected | any {|x| $x == "config flake"}) {
         sudo nix flake update --flake /etc/nixos
     }
 
     if ($selected | any {|x| $x == "home-manager"}) {
-        home-manager switch --flake $"/etc/nixos#($user)@($host)" --impure
+        home-manager switch --flake $"/etc/nixos#($user)@($host)"
     }
 }
 
 # opens a select menu of nixos generations to remove
 def "nix remove-generations" [] {
-    let generations = nix list-generations | where not isActive;
+    let generations = nix list-generations | where not Current;
     
-    let selected = $generations | get generation | str join "\n" | fzf --multi | lines | into int;
+    let selected = $generations | get Generation | str join "\n" | fzf --multi | lines | into int;
 
     if ($selected != null) {
         sudo nix-env -p /nix/var/nix/profiles/system --delete-generations ...$selected
@@ -218,14 +217,15 @@ def "nix remove-generations" [] {
 
 def "nix list-generations" []: nothing -> table {
     nixos-rebuild list-generations
-        | parse --regex "(?<generation>\\d+)\\s+(?<buildDate>[-\\d]+ [:\\d]+)\\s+(?<nixosVersion>[\\.\\w]+)\\s+(?<kernalVersion>[\\.\\d]+)\\s+(?<revision>\\w+)\\s+(?<specialisation>\\[.*\\])\\s+(?<isActive>True|False)"
-        | update generation { into int }
-        | update buildDate { into datetime }
-        | update specialisation { from json }
-        | update isActive { into bool }
+        | detect columns --guess
+        | into datetime Build-date 
+        | into int Generation 
+        | into bool Current
+        | update Specialisation {from json}
+
 }
 
-let vscodium_root_flags = $"--no-sandbox --user-data-dir=/home/(whoami)/.config/VSCodium";
+let vscodium_root_flags = $"--no-sandbox --user-data-dir=/home/(whoami)/.vscode-oss";
 
 const config_dirs = {
     "starship": "~/.config/starship.toml",
