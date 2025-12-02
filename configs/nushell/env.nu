@@ -22,3 +22,4 @@ $env.PATH = ($env.PATH
     | split row (char esep)
     | prepend $"($env.FNM_MULTISHELL_PATH)/bin")
 
+$env.PATH ++= ["~/.steam/steam/steamapps/common/Proton - Experimental/"]
