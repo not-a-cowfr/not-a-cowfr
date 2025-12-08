@@ -18,3 +18,29 @@ path add [
     "~/.steam/steam/steamapps/common/Proton - Experimental/",
     $env.PNPM_HOME
 ];
+
+# adds target/debug and target/release to path for testing rust binaries
+$env.config = ($env.config | upsert hooks.env_change.PWD {
+	append {
+		condition: {|_, after| ($after | path join 'Cargo.lock' | path exists) }
+		code: {|_, after|
+			$env.PATH = (
+				$env.PATH
+					| prepend ($after | path join 'target' 'debug')
+					| prepend ($after | path join 'target' 'release')
+					| uniq
+			)
+		}
+	}
+  | append {
+		condition: {|before, _| ($before | default '' | path join 'Cargo.lock' | path exists) and ($before | is-not-empty)}
+		code: {|before, _|
+			$env.PATH = (
+				$env.PATH
+					| where $it != ($before | path join 'target' 'debug')
+					| where $it != ($before | path join 'target' 'release')
+					| uniq
+			)
+		}
+	}
+})
