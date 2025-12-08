@@ -39,3 +39,22 @@ def "nix list-generations" []: nothing -> table {
         | update Specialisation {from json}
 
 }
+
+# Search nixpkgs and provide table output
+def "nix-search" [
+    term: string # Search target.
+] {
+
+    let info = (
+        sysctl -n kernel.arch kernel.ostype
+        | lines
+        | {arch: ($in.0|str downcase), ostype: ($in.1|str downcase)}
+    )
+
+    nix search --json nixpkgs $term err> /dev/null
+        | from json
+        | transpose package description
+        | flatten
+        | select package description version
+        | update package {|row| $row.package | str replace $"legacyPackages.($info.arch)-($info.ostype)." ""}
+}
