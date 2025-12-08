@@ -111,5 +111,6 @@ starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.n
 
 source alias.nu
 source copy.nu
+source hooks.nu
 source commands/commands.nu
 source completions/completions.nu
